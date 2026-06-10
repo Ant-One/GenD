@@ -18,6 +18,19 @@ rich_traceback.install()
 
 
 def load_third_party_model(config: Config) -> BaseDeepakeDetectionModel:
+     # Détection basée sur le nom du fichier de poids
+    if "clip" in config.checkpoint.lower():
+        from src.model.Clip_large import CLIP
+        return CLIP(config)
+    
+    if "xception" in config.checkpoint.lower():
+        from src.model.Xception import Xception
+        return Xception(config)
+    
+    if "spsl" in config.checkpoint.lower():
+        from src.model.SPSL import SPSL
+        return SPSL(config)
+    
     if "weights/Effort" in config.checkpoint:
         # Download: https://drive.google.com/drive/folders/19kQwGDjF18uk78EnnypxxOLaG4Aa4v1h
         from src.model.Effort import Effort
@@ -172,3 +185,4 @@ def main(config: Config, train: bool):
 
     # Finish wandb run
     finish_wandb_run(trainer, config)
+

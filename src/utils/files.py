@@ -679,55 +679,248 @@ class DF40:
     """https://arxiv.org/abs/2406.13495"""
 
     class CDF:
-        class SadTalker:
+        # FS
+        class BlendFace:
             test = Files(
-                "config/datasets/DF40/test/test_cdf_sadtalker.txt",
+                "config/datasets/DF40/test/blendface_cdf.txt",
                 "config/datasets/CDFv2/test/YouTube-real.txt",
                 "config/datasets/CDFv2/test/Celeb-real.txt",
             )
-
-        class FOMM:
+        class E4S:
             test = Files(
-                "config/datasets/DF40/test/test_cdf_fomm.txt",
+                "config/datasets/DF40/test/e4s_cdf.txt",
                 "config/datasets/CDFv2/test/YouTube-real.txt",
                 "config/datasets/CDFv2/test/Celeb-real.txt",
             )
-
-        class FaceDancer:
+        class Facedancer:
             test = Files(
-                "config/datasets/DF40/test/test_cdf_facedancer.txt",
+                "config/datasets/DF40/test/facedancer_cdf.txt",
                 "config/datasets/CDFv2/test/YouTube-real.txt",
                 "config/datasets/CDFv2/test/Celeb-real.txt",
             )
-
+        class FSGan:
+            test = Files(
+                "config/datasets/DF40/test/fsgan_cdf.txt",
+                "config/datasets/CDFv2/test/YouTube-real.txt",
+                "config/datasets/CDFv2/test/Celeb-real.txt",
+            )
+        class InSwap:
+            test = Files(
+                "config/datasets/DF40/test/inswap_cdf.txt",
+                "config/datasets/CDFv2/test/YouTube-real.txt",
+                "config/datasets/CDFv2/test/Celeb-real.txt",
+            )
         class MobileSwap:
             test = Files(
-                "config/datasets/DF40/test/test_cdf_mobileswap.txt",
+                "config/datasets/DF40/test/mobileswap_cdf.txt",
                 "config/datasets/CDFv2/test/YouTube-real.txt",
                 "config/datasets/CDFv2/test/Celeb-real.txt",
             )
-
         class SimSwap:
             test = Files(
-                "config/datasets/DF40/test/test_cdf_simswap.txt",
+                "config/datasets/DF40/test/simswap_cdf.txt",
                 "config/datasets/CDFv2/test/YouTube-real.txt",
                 "config/datasets/CDFv2/test/Celeb-real.txt",
             )
-
-        class InSwapper:
-            test = Files(
-                "config/datasets/DF40/test/test_cdf_inswap.txt",
-                "config/datasets/CDFv2/test/YouTube-real.txt",
-                "config/datasets/CDFv2/test/Celeb-real.txt",
-            )
-
         class Uniface:
             test = Files(
-                "config/datasets/DF40/test/test_cdf_uniface.txt",
+                "config/datasets/DF40/test/uniface_cdf.txt",
                 "config/datasets/CDFv2/test/YouTube-real.txt",
                 "config/datasets/CDFv2/test/Celeb-real.txt",
             )
 
+        test_fs = Files(
+                BlendFace.test + E4S.test + Facedancer.test + FSGan.test + 
+                InSwap.test + MobileSwap.test + SimSwap.test + Uniface.test
+            ).unique()
+        
+        # FR
+
+        class MRAA:
+            test = Files(
+                "config/datasets/DF40/test/mraa_cdf.txt",
+                "config/datasets/CDFv2/test/YouTube-real.txt",
+                "config/datasets/CDFv2/test/Celeb-real.txt",
+            )
+
+        class DANET:
+            test = Files(
+                "config/datasets/DF40/test/danet_cdf.txt",
+                "config/datasets/CDFv2/test/YouTube-real.txt",
+                "config/datasets/CDFv2/test/Celeb-real.txt",
+            )
+
+        class FaceVid2Vid:
+            test = Files(
+                "config/datasets/DF40/test/facevid2vid_cdf.txt",
+                "config/datasets/CDFv2/test/YouTube-real.txt",
+                "config/datasets/CDFv2/test/Celeb-real.txt",
+            )
+
+        class Fomm:
+            test = Files(
+                "config/datasets/DF40/test/fomm_cdf.txt",
+                "config/datasets/CDFv2/test/YouTube-real.txt",
+                "config/datasets/CDFv2/test/Celeb-real.txt",
+            )
+
+        class Hyperreenact:
+            test = Files(
+                "config/datasets/DF40/test/hyperreenact_cdf.txt",
+                "config/datasets/CDFv2/test/YouTube-real.txt",
+                "config/datasets/CDFv2/test/Celeb-real.txt",
+            )
+
+        class Lia:
+            test = Files(
+                "config/datasets/DF40/test/lia_cdf.txt",
+                "config/datasets/CDFv2/test/YouTube-real.txt",
+                "config/datasets/CDFv2/test/Celeb-real.txt",
+            )
+
+        class MCNet:
+            test = Files(
+                "config/datasets/DF40/test/mcnet_cdf.txt",
+                "config/datasets/CDFv2/test/YouTube-real.txt",
+                "config/datasets/CDFv2/test/Celeb-real.txt",
+            )
+
+        class OneShotFree:
+            test = Files(
+                "config/datasets/DF40/test/oneshotfree_cdf.txt",
+                "config/datasets/CDFv2/test/YouTube-real.txt",
+                "config/datasets/CDFv2/test/Celeb-real.txt",
+            )
+        
+        class Pirender:
+            test = Files(
+                "config/datasets/DF40/test/pirender_cdf.txt",
+                "config/datasets/CDFv2/test/YouTube-real.txt",
+                "config/datasets/CDFv2/test/Celeb-real.txt",
+            )
+
+        class SadTalker:
+            test = Files(
+                "config/datasets/DF40/test/sadtalker_cdf.txt",
+                "config/datasets/CDFv2/test/YouTube-real.txt",
+                "config/datasets/CDFv2/test/Celeb-real.txt",
+            )
+
+        class TPSM:
+            test = Files(
+                "config/datasets/DF40/test/tpsm_cdf.txt",
+                "config/datasets/CDFv2/test/YouTube-real.txt",
+                "config/datasets/CDFv2/test/Celeb-real.txt",
+            )
+
+        class Wav2Lip:
+            test = Files(
+                "config/datasets/DF40/test/wav2lip_cdf.txt",
+                "config/datasets/CDFv2/test/YouTube-real.txt",
+                "config/datasets/CDFv2/test/Celeb-real.txt",
+            )
+
+        test_fr = Files(
+                MRAA.test + DANET.test + FaceVid2Vid.test + Fomm.test + Hyperreenact.test + Lia.test + MCNet.test + OneShotFree.test + Pirender.test + SadTalker.test + TPSM.test + Wav2Lip.test
+            ).unique()
+        
+     # EFS
+
+        class DiT:
+            test = Files(
+                "config/datasets/DF40/test/dit_cdf.txt",
+                "config/datasets/CDFv2/test/YouTube-real.txt",
+                "config/datasets/CDFv2/test/Celeb-real.txt",
+            )
+        class SiT:
+            test = Files(
+                "config/datasets/DF40/test/sit_cdf.txt",
+                "config/datasets/CDFv2/test/YouTube-real.txt",
+                "config/datasets/CDFv2/test/Celeb-real.txt",
+            )
+        class StyleGAN2:
+            test = Files(
+                "config/datasets/DF40/test/stylegan2_cdf.txt",
+                "config/datasets/CDFv2/test/YouTube-real.txt",
+                "config/datasets/CDFv2/test/Celeb-real.txt",
+            )
+        class StyleGAN3:
+            test = Files(
+                "config/datasets/DF40/test/stylegan3_cdf.txt",
+                "config/datasets/CDFv2/test/YouTube-real.txt",
+                "config/datasets/CDFv2/test/Celeb-real.txt",
+            )
+        class StyleGANXL:
+            test = Files(
+                "config/datasets/DF40/test/styleganxl_cdf.txt",
+                "config/datasets/CDFv2/test/YouTube-real.txt",
+                "config/datasets/CDFv2/test/Celeb-real.txt",
+            )
+        class VQGAN:
+            test = Files(
+                "config/datasets/DF40/test/vqgan_cdf.txt",
+                "config/datasets/CDFv2/test/YouTube-real.txt",
+                "config/datasets/CDFv2/test/Celeb-real.txt",
+            )
+        class DDIM:
+            test = Files(
+                "config/datasets/DF40/test/ddim_cdf.txt",
+                "config/datasets/CDFv2/test/YouTube-real.txt",
+                "config/datasets/CDFv2/test/Celeb-real.txt",
+            )
+        class Pixart:
+            test = Files(
+                "config/datasets/DF40/test/pixart_cdf.txt",
+                "config/datasets/CDFv2/test/YouTube-real.txt",
+                "config/datasets/CDFv2/test/Celeb-real.txt",
+            )
+        class RDDM:
+            test = Files(
+                "config/datasets/DF40/test/rddm_cdf.txt",
+                "config/datasets/CDFv2/test/YouTube-real.txt",
+                "config/datasets/CDFv2/test/Celeb-real.txt",
+            )
+        class SD21:
+            test = Files(
+                "config/datasets/DF40/test/sd21_cdf.txt",
+                "config/datasets/CDFv2/test/YouTube-real.txt",
+                "config/datasets/CDFv2/test/Celeb-real.txt",
+            )
+
+        test_efs = Files(DiT.test + SiT.test + StyleGAN2.test + StyleGAN3.test + VQGAN.test + DDIM.test + Pixart.test + RDDM.test + SD21.test)
+
+        # @classmethod
+        # def get_test_dict(cls) -> dict[str, list[str]]:
+        #     return {
+        #         "DF40-CDF-BlendFace": cls.BlendFace.test,
+        #         "DF40-CDF-E4S": cls.E4S.test,
+        #         "DF40-CDF-Facedancer": cls.Facedancer.test,
+        #         "DF40-CDF-FSGan": cls.FSGan.test,
+        #         "DF40-CDF-InSwap": cls.InSwap.test,
+        #         "DF40-CDF-MobileSwap": cls.MobileSwap.test,
+        #         "DF40-CDF-SimSwap": cls.SimSwap.test,
+        #         "DF40-CDF-Uniface": cls.Uniface.test,
+        #         "DF40-CDF-All": cls.test,
+        #     }
+
+
+class DF40Balanced:
+    """https://arxiv.org/abs/2406.13495"""
+
+    class FF:
+        # FS
+        class BlendFace:
+            train = Files(
+                "/home/antoine/balanced_df40_for_gend/df40/train/fake/blendface_ff_fake_balanced_train.txt",
+                "/home/antoine/balanced_df40_for_gend/df40/train/real/blendface_ff_real_balanced_train.txt",
+            )
+            val = Files(
+                "/home/antoine/balanced_df40_for_gend/df40/val/fake/blendface_ff_fake_balanced_val.txt",
+                "/home/antoine/balanced_df40_for_gend/df40/val/real/blendface_ff_real_balanced_val.txt",
+            )
+
+        train_fs = Files(BlendFace.train)
+        val_fs = Files(BlendFace.val)
 
 class FFv2:
     """

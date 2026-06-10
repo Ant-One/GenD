@@ -18,7 +18,7 @@ class CLIPEncoder(nn.Module):
         super().__init__()
 
         try:
-            self._preprocess = CLIPProcessor.from_pretrained(model_name)
+            self._preprocess = CLIPProcessor.from_pretrained(model_name, use_fast=True)
         except Exception:
             self._preprocess = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch16")
 

@@ -25,7 +25,7 @@ class CLIPEncoder(nn.Module):
         from transformers import CLIPModel, CLIPProcessor
 
         try:
-            self._preprocess = CLIPProcessor.from_pretrained(model_name)
+            self._preprocess = CLIPProcessor.from_pretrained(model_name, use_fast=True)
         except Exception:
             self._preprocess = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch16")
 
@@ -57,7 +57,7 @@ class DINOEncoder(nn.Module):
 
         from transformers import AutoImageProcessor, AutoModel, Dinov2Model, Dinov2WithRegistersModel
 
-        self._preprocess = AutoImageProcessor.from_pretrained(model_name)
+        self._preprocess = AutoImageProcessor.from_pretrained(model_name, use_fast=True)
         self.backbone: Dinov2Model | Dinov2WithRegistersModel = AutoModel.from_pretrained(model_name)
 
         self.features_dim = self.backbone.config.hidden_size

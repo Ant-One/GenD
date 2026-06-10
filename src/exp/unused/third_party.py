@@ -1,5 +1,5 @@
-from .. import config as C
-from ..config import Config
+from ... import config as C
+from ...config import Config
 from ..utils import files
 
 experiments = {

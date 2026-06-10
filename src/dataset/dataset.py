@@ -187,6 +187,7 @@ class DeepfakeDataset(BaseDataset):
     def get_source_from_file(file_path: str) -> str:
         # ... / <dataset_name> / <source_name> / <video_name> / <frame_name>
         # returns <source_name>
+
         return file_path.split("/")[-3]
 
     @staticmethod

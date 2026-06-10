@@ -1,5 +1,7 @@
-from .. import config as C
-from ..config import Config
+from ... import config as C
+from ...config import Config
+
+from ...utils.files import DF40, CDFv2
 
 experiments = {
     "example-training": [
@@ -87,6 +89,79 @@ experiments = {
             ],
             checkpoint="yermandy/GenD_DINOv3_L",
             max_epochs=1,
+            wandb=False,
+            devices=[0],
+        )
+    ],
+    "df40-fs-cdf-clip": [
+        Config(
+            run_dir="runs/test",
+            tst_files=DF40.CDF.test_fs,
+            batch_size=128,
+            mini_batch_size=128,
+            wandb=False,
+            devices=[0],
+        )
+    ],
+
+    "df40-fr-cdf-clip": [
+        Config(
+            run_dir="runs/test",
+            tst_files=DF40.CDF.test_fr,
+            batch_size=128,
+            mini_batch_size=128,
+            wandb=False,
+            devices=[0],
+        )
+    ],
+    "df40-fs-cdf-pe": [
+        Config(
+            run_dir="runs/test",
+            tst_files=DF40.CDF.test_fs,
+            batch_size=128,
+            mini_batch_size=128,
+            wandb=False,
+            devices=[0],
+        )
+    ],
+
+    "df40-fr-cdf-pe": [
+        Config(
+            run_dir="runs/test",
+            tst_files=DF40.CDF.test_fr,
+            batch_size=128,
+            mini_batch_size=128,
+            wandb=False,
+            devices=[0],
+        )
+    ],
+    "df40-fs-cdf-dino": [
+        Config(
+            run_dir="runs/test",
+            tst_files=DF40.CDF.test_fs,
+            batch_size=128,
+            mini_batch_size=128,
+            wandb=False,
+            devices=[0],
+        )
+    ],
+
+    "df40-fs-cdf-xception": [
+        Config(
+            run_dir="runs/test",
+            tst_files=DF40.CDF.test_fs,
+            batch_size=128,
+            mini_batch_size=128,
+            wandb=False,
+            devices=[0],
+        )
+    ],
+    "df40-fr-cdf-xception": [
+        Config(
+            run_dir="runs/test",
+            tst_files=DF40.CDF.test_fr,
+            batch_size=128,
+            mini_batch_size=128,
             wandb=False,
             devices=[0],
         )

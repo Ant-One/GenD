@@ -19,7 +19,7 @@ class DINOEncoder(nn.Module):
 
         super().__init__()
 
-        self._preprocess = AutoImageProcessor.from_pretrained(model_name)
+        self._preprocess = AutoImageProcessor.from_pretrained(model_name, use_fast=True)
         self.backbone: Dinov2Model | Dinov2WithRegistersModel | DINOv3ViTModel = AutoModel.from_pretrained(model_name)
         self.merge_cls_token_with_patches = merge_cls_token_with_patches
 
