@@ -4,7 +4,7 @@ from ..config import Config
 from ..utils.files import DF40, DF40Balanced, CDFv2
 
 experiments = {
-    "df40-b-fs-ff-clip-gend": [
+    "biggerbatch-cycle-df40-b-fs-ff-clip-gend-non-unique": [
         Config(
             backbone=C.Backbone.CLIP_L_14,
             head=C.Head.Linear,
@@ -14,12 +14,39 @@ experiments = {
             trn_files=DF40Balanced.FF.train_fs,
             val_files=DF40Balanced.FF.val_fs,
             tst_files=DF40.CDF.test_fs,
-            batch_size=2,
-            mini_batch_size=2,
+            batch_size=96,
+            mini_batch_size=96,
             wandb=True,
             devices=[0],
+            lr_scheduler="cyclic",
+            num_epochs_in_cycle=4,
+            max_epochs=20,
+            warmup_epochs=1,
+            early_stopping_patience=10,
+            monitor_metric="val/mAP_frame"
         )
     ],
+    # "own-bdf40-fs-cdf-clip_large": [
+    #     Config(
+    #         run_dir="runs/test",
+    #         backbone=C.Backbone.CLIP_L_14,
+    #         tst_files=DF40.CDF.test_fs,
+    #         batch_size=128,
+    #         mini_batch_size=128,
+    #         wandb=False,
+    #         devices=[0],
+    #         checkpoint="/home/antoine/GenD/runs/train/cycle-df40-b-fs-ff-clip-gend-non-unique/checkpoints/best_mAP.ckpt",
+    #     )
+    # ],
+    # "clip-baseline-fs": [
+    #     Config(
+    #         backbone=C.Backbone.CLIP_L_14,
+    #         head=C.Head.Linear,
+    #         loss=C.Loss(ce_labels=1.0),
+    #         tst_files=DF40.CDF.test_fs,
+    #         checkpoint=""
+    #     )
+    # ],
     #     "example-training": [
     #     Config(
     #         backbone=C.Backbone.CLIP_L_14,

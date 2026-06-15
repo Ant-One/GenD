@@ -56,7 +56,7 @@ def get_default_train_config() -> Config:
 
     config.run_dir = "runs/rebuttal"
     config.wandb = True
-    config.wandb_tags.append("rebuttal")
+    #config.wandb_tags.append("rebuttal")
     config.throw_exception_if_run_exists = True
 
     config.num_workers = 12

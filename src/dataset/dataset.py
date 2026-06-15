@@ -97,7 +97,8 @@ class DeepfakeDataset(BaseDataset):
                             dataset2files[dataset_name].extend(paths)
 
         # Remove duplicate paths
-        files = np.unique(files).tolist()
+        #files = np.unique(files).tolist()
+        
 
         # Limit the number of files
         if limit_files is not None:
@@ -110,8 +111,12 @@ class DeepfakeDataset(BaseDataset):
             if binary:
                 if "real" in source:
                     source = "real"
-                else:
+                elif "fake" in source:
                     source = "fake"
+                else:
+                    logger.print_error(f"{path} is not real or fake")
+                    import sys
+                    sys.exit("I do not know how to stop the program otherwise.")
 
             label = source2label[source]
             labels.append(label)
@@ -129,19 +134,37 @@ class DeepfakeDataset(BaseDataset):
         """Limits number of files by considering unique videos"""
         # Select unique videos
         video_paths = [self.get_video_path(file) for file in files]
-        unique_videos = list(np.unique(video_paths))
+        #unique_videos = list(np.unique(video_paths))
 
-        # For each video, select files
-        video2files = {video: [] for video in unique_videos}
+        non_unique_videos = list(video_paths)
+
+        # # For each video, select files
+        # video2files = {video: [] for video in unique_videos}
+        # for file, video in zip(files, video_paths):
+        #     video2files[video].append(file)
+
+        # # Shuffle videos with fixed seed
+        # np.random.RandomState(42).shuffle(unique_videos)
+
+        # # Select files from shuffled videos
+        # selected_files = []
+        # for video in unique_videos:
+        #     selected_files.extend(video2files[video])
+
+        #     if len(selected_files) >= limit:
+        #         break
+
+         # For each video, select files
+        video2files = {video: [] for video in non_unique_videos}
         for file, video in zip(files, video_paths):
             video2files[video].append(file)
 
         # Shuffle videos with fixed seed
-        np.random.RandomState(42).shuffle(unique_videos)
+        np.random.RandomState(42).shuffle(non_unique_videos)
 
         # Select files from shuffled videos
         selected_files = []
-        for video in unique_videos:
+        for video in non_unique_videos:
             selected_files.extend(video2files[video])
 
             if len(selected_files) >= limit:
