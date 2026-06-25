@@ -33,24 +33,40 @@ class FF:
     """https://arxiv.org/abs/1901.08971"""
 
     class DF:
+        train = Files(
+            "config/datasets/train-from-gend/FF-1.3x-th0.5/FF-x1.3-th0.5-DF.txt",
+            "config/datasets/train-from-gend/FF-1.3x-th0.5/FF-x1.3-th0.5-real.txt",
+        )
         test = Files(
             "config/datasets/FF/test/DF.txt",
             "config/datasets/FF/test/real.txt",
         )
 
     class F2F:
+        train = Files(
+            "config/datasets/train-from-gend/FF-1.3x-th0.5/FF-x1.3-th0.5-F2F.txt",
+            "config/datasets/train-from-gend/FF-1.3x-th0.5/FF-x1.3-th0.5-real.txt",
+        )
         test = Files(
             "config/datasets/FF/test/F2F.txt",
             "config/datasets/FF/test/real.txt",
         )
 
     class FS:
+        train = Files(
+            "config/datasets/train-from-gend/FF-1.3x-th0.5/FF-x1.3-th0.5-FS.txt",
+            "config/datasets/train-from-gend/FF-1.3x-th0.5/FF-x1.3-th0.5-real.txt",
+        )
         test = Files(
             "config/datasets/FF/test/FS.txt",
             "config/datasets/FF/test/real.txt",
         )
 
     class NT:
+        train = Files(
+            "config/datasets/train-from-gend/FF-1.3x-th0.5/FF-x1.3-th0.5-NT.txt",
+            "config/datasets/train-from-gend/FF-1.3x-th0.5/FF-x1.3-th0.5-real.txt",
+        )
         test = Files(
             "config/datasets/FF/test/NT.txt",
             "config/datasets/FF/test/real.txt",
@@ -72,7 +88,7 @@ class FF:
         return f.replace("/FF/", "/FF-rmbg-x1.5/")
 
     test = Files(DF.test + F2F.test + FS.test + NT.test).unique()
-    train = test.map(to_train)
+    train = Files(DF.train + F2F.train + FS.train + NT.train)
     val = test.map(to_val)
 
 
@@ -347,15 +363,15 @@ class CDFv3:
 
 class DFD:
     test = Files(
-        "config/datasets/DFD/fake.txt",
-        "config/datasets/DFD/real.txt",
+        "/home/antoine/GenD/config/datasets/test-from-gend/DFD_fake.txt",
+        "/home/antoine/GenD/config/datasets/test-from-gend/DFD_real.txt",
     )
 
 
 class DFDC:
     test = Files(
-        "config/datasets/DFDC/test/fake.txt",
-        "config/datasets/DFDC/test/real.txt",
+        "/home/antoine/GenD/config/datasets/test-from-gend/DFDC_fake.txt",
+        "/home/antoine/GenD/config/datasets/test-from-gend/DFDC_real.txt",
     )
 
 
@@ -366,8 +382,8 @@ class FSh:
     """
 
     test = Files(
-        "config/datasets/FSh/test/fake.txt",
-        "config/datasets/FSh/test/real.txt",
+        "/home/antoine/GenD/config/datasets/test-from-gend/FSh_test_real.txt",
+        "/home/antoine/GenD/config/datasets/test-from-gend/FSh_test_fake.txt",
     )
 
 
@@ -375,8 +391,8 @@ class UADFV:
     """https://arxiv.org/abs/1806.02877"""
 
     test = Files(
-        "config/datasets/UADFD/fake.txt",
-        "config/datasets/UADFD/real.txt",
+        "/home/antoine/GenD/config/datasets/test-from-gend/UADFV_fake.txt",
+        "/home/antoine/GenD/config/datasets/test-from-gend/UADFV_real.txt",
     )
 
 
@@ -396,8 +412,8 @@ class FFIW:
     """https://arxiv.org/abs/2103.16076"""
 
     test = Files(
-        "config/datasets/FFIW/test-fake.txt",
-        "config/datasets/FFIW/test-real.txt",
+        "/home/antoine/GenD/config/datasets/test-from-gend/FFIW_fake.txt",
+        "/home/antoine/GenD/config/datasets/test-from-gend/FFIW_real.txt",
     )
 
     val = Files(
@@ -681,220 +697,221 @@ class DF40:
     class CDF:
         # FS
         class BlendFace:
-            test = Files(
+            val = Files(
                 "/home/antoine/balanced_df40_for_gend/df40/test/fake/blendface_cdf.txt",
                 "/home/antoine/balanced_df40_for_gend/df40/test/real/Celeb-real.txt",
                 "/home/antoine/balanced_df40_for_gend/df40/test/real/YouTube-real.txt",
             )
         class E4S:
-            test = Files(
+            val = Files(
                 "/home/antoine/balanced_df40_for_gend/df40/test/fake/e4s_cdf.txt",
                 "/home/antoine/balanced_df40_for_gend/df40/test/real/Celeb-real.txt",
                 "/home/antoine/balanced_df40_for_gend/df40/test/real/YouTube-real.txt",
             )
         class Facedancer:
-            test = Files(
+            val = Files(
                 "/home/antoine/balanced_df40_for_gend/df40/test/fake/facedancer_cdf.txt",
                 "/home/antoine/balanced_df40_for_gend/df40/test/real/Celeb-real.txt",
                 "/home/antoine/balanced_df40_for_gend/df40/test/real/YouTube-real.txt",
             )
 
         class Faceswap:
-            test = Files(
+            val = Files(
                 "/home/antoine/balanced_df40_for_gend/df40/test/fake/faceswap_cdf.txt",
                 "/home/antoine/balanced_df40_for_gend/df40/test/real/Celeb-real.txt",
                 "/home/antoine/balanced_df40_for_gend/df40/test/real/YouTube-real.txt",
             )
         class FSGan:
-            test = Files(
+            val = Files(
                 "/home/antoine/balanced_df40_for_gend/df40/test/fake/fsgan_cdf.txt",
                 "/home/antoine/balanced_df40_for_gend/df40/test/real/Celeb-real.txt",
                 "/home/antoine/balanced_df40_for_gend/df40/test/real/YouTube-real.txt",
             )
         class InSwap:
-            test = Files(
+            val = Files(
                 "/home/antoine/balanced_df40_for_gend/df40/test/fake/inswap_cdf.txt",
                 "/home/antoine/balanced_df40_for_gend/df40/test/real/Celeb-real.txt",
                 "/home/antoine/balanced_df40_for_gend/df40/test/real/YouTube-real.txt",
             )
         class MobileSwap:
-            test = Files(
+            val = Files(
                 "/home/antoine/balanced_df40_for_gend/df40/test/fake/mobileswap_cdf.txt",
                 "/home/antoine/balanced_df40_for_gend/df40/test/real/Celeb-real.txt",
                 "/home/antoine/balanced_df40_for_gend/df40/test/real/YouTube-real.txt",
             )
         class SimSwap:
-            test = Files(
+            val = Files(
                 "/home/antoine/balanced_df40_for_gend/df40/test/fake/simswap_cdf.txt",
                 "/home/antoine/balanced_df40_for_gend/df40/test/real/Celeb-real.txt",
                 "/home/antoine/balanced_df40_for_gend/df40/test/real/YouTube-real.txt",
             )
         class Uniface:
-            test = Files(
+            val = Files(
                 "/home/antoine/balanced_df40_for_gend/df40/test/fake/uniface_cdf.txt",
                 "/home/antoine/balanced_df40_for_gend/df40/test/real/Celeb-real.txt",
                 "/home/antoine/balanced_df40_for_gend/df40/test/real/YouTube-real.txt",
             )
 
-        test_fs = Files(
-                BlendFace.test + E4S.test + Facedancer.test + Faceswap.test + FSGan.test + 
-                InSwap.test + MobileSwap.test + SimSwap.test + Uniface.test
+        val_fs = Files(
+                BlendFace.val + E4S.val + Facedancer.val + Faceswap.val + FSGan.val + 
+                InSwap.val + MobileSwap.val + SimSwap.val + Uniface.val
             ).unique()
         
         # FR
 
-        class MRAA:
-            test = Files(
-                "config/datasets/DF40/test/mraa_cdf.txt",
-                "config/datasets/CDFv2/test/YouTube-real.txt",
-                "config/datasets/CDFv2/test/Celeb-real.txt",
-            )
+        # class MRAA:
+        #     test = Files(
+        #         "/home/antoine/balanced_df40_for_gend/df40/test/fake/mraa_cdf.txt",
+        #         "/home/antoine/balanced_df40_for_gend/df40/test/real/Celeb-real.txt",
+        #         "/home/antoine/balanced_df40_for_gend/df40/test/real/YouTube-real.txt",
+        #     )
 
         class DANET:
-            test = Files(
-                "config/datasets/DF40/test/danet_cdf.txt",
-                "config/datasets/CDFv2/test/YouTube-real.txt",
-                "config/datasets/CDFv2/test/Celeb-real.txt",
+            val = Files(
+                "/home/antoine/balanced_df40_for_gend/df40/test/fake/danet_cdf.txt",
+                "/home/antoine/balanced_df40_for_gend/df40/test/real/Celeb-real.txt",
+                "/home/antoine/balanced_df40_for_gend/df40/test/real/YouTube-real.txt",
             )
 
         class FaceVid2Vid:
-            test = Files(
-                "config/datasets/DF40/test/facevid2vid_cdf.txt",
-                "config/datasets/CDFv2/test/YouTube-real.txt",
-                "config/datasets/CDFv2/test/Celeb-real.txt",
+            val = Files(
+                "/home/antoine/balanced_df40_for_gend/df40/test/fake/facevid2vid_cdf.txt",
+                "/home/antoine/balanced_df40_for_gend/df40/test/real/Celeb-real.txt",
+                "/home/antoine/balanced_df40_for_gend/df40/test/real/YouTube-real.txt",
             )
-
         class Fomm:
-            test = Files(
-                "config/datasets/DF40/test/fomm_cdf.txt",
-                "config/datasets/CDFv2/test/YouTube-real.txt",
-                "config/datasets/CDFv2/test/Celeb-real.txt",
+            val = Files(
+                "/home/antoine/balanced_df40_for_gend/df40/test/fake/fomm_cdf.txt",
+                "/home/antoine/balanced_df40_for_gend/df40/test/real/Celeb-real.txt",
+                "/home/antoine/balanced_df40_for_gend/df40/test/real/YouTube-real.txt",
             )
 
         class Hyperreenact:
-            test = Files(
-                "config/datasets/DF40/test/hyperreenact_cdf.txt",
-                "config/datasets/CDFv2/test/YouTube-real.txt",
-                "config/datasets/CDFv2/test/Celeb-real.txt",
+            val = Files(
+                "/home/antoine/balanced_df40_for_gend/df40/test/fake/hyperreenact_cdf.txt",
+                "/home/antoine/balanced_df40_for_gend/df40/test/real/Celeb-real.txt",
+                "/home/antoine/balanced_df40_for_gend/df40/test/real/YouTube-real.txt",
             )
 
         class Lia:
-            test = Files(
-                "config/datasets/DF40/test/lia_cdf.txt",
-                "config/datasets/CDFv2/test/YouTube-real.txt",
-                "config/datasets/CDFv2/test/Celeb-real.txt",
+            val = Files(
+                "/home/antoine/balanced_df40_for_gend/df40/test/fake/lia_cdf.txt",
+                "/home/antoine/balanced_df40_for_gend/df40/test/real/Celeb-real.txt",
+                "/home/antoine/balanced_df40_for_gend/df40/test/real/YouTube-real.txt",
             )
 
         class MCNet:
-            test = Files(
-                "config/datasets/DF40/test/mcnet_cdf.txt",
-                "config/datasets/CDFv2/test/YouTube-real.txt",
-                "config/datasets/CDFv2/test/Celeb-real.txt",
+            val = Files(
+                "/home/antoine/balanced_df40_for_gend/df40/test/fake/mcnet_cdf.txt",
+                "/home/antoine/balanced_df40_for_gend/df40/test/real/Celeb-real.txt",
+                "/home/antoine/balanced_df40_for_gend/df40/test/real/YouTube-real.txt",
             )
 
         class OneShotFree:
-            test = Files(
-                "config/datasets/DF40/test/oneshotfree_cdf.txt",
-                "config/datasets/CDFv2/test/YouTube-real.txt",
-                "config/datasets/CDFv2/test/Celeb-real.txt",
+            val = Files(
+                "/home/antoine/balanced_df40_for_gend/df40/test/fake/oneshotfree_cdf.txt",
+                "/home/antoine/balanced_df40_for_gend/df40/test/real/Celeb-real.txt",
+                "/home/antoine/balanced_df40_for_gend/df40/test/real/YouTube-real.txt",
             )
         
         class Pirender:
-            test = Files(
-                "config/datasets/DF40/test/pirender_cdf.txt",
-                "config/datasets/CDFv2/test/YouTube-real.txt",
-                "config/datasets/CDFv2/test/Celeb-real.txt",
+            val = Files(
+                "/home/antoine/balanced_df40_for_gend/df40/test/fake/pirender_cdf.txt",
+                "/home/antoine/balanced_df40_for_gend/df40/test/real/Celeb-real.txt",
+                "/home/antoine/balanced_df40_for_gend/df40/test/real/YouTube-real.txt",
             )
 
         class SadTalker:
-            test = Files(
-                "config/datasets/DF40/test/sadtalker_cdf.txt",
-                "config/datasets/CDFv2/test/YouTube-real.txt",
-                "config/datasets/CDFv2/test/Celeb-real.txt",
+            val = Files(
+                "/home/antoine/balanced_df40_for_gend/df40/test/fake/sadtalker_cdf.txt",
+                "/home/antoine/balanced_df40_for_gend/df40/test/real/Celeb-real.txt",
+                "/home/antoine/balanced_df40_for_gend/df40/test/real/YouTube-real.txt",
             )
 
         class TPSM:
-            test = Files(
-                "config/datasets/DF40/test/tpsm_cdf.txt",
-                "config/datasets/CDFv2/test/YouTube-real.txt",
-                "config/datasets/CDFv2/test/Celeb-real.txt",
+            val = Files(
+                "/home/antoine/balanced_df40_for_gend/df40/test/fake/tpsm_cdf.txt",
+                "/home/antoine/balanced_df40_for_gend/df40/test/real/Celeb-real.txt",
+                "/home/antoine/balanced_df40_for_gend/df40/test/real/YouTube-real.txt",
             )
 
         class Wav2Lip:
-            test = Files(
-                "config/datasets/DF40/test/wav2lip_cdf.txt",
-                "config/datasets/CDFv2/test/YouTube-real.txt",
-                "config/datasets/CDFv2/test/Celeb-real.txt",
+            val = Files(
+                "/home/antoine/balanced_df40_for_gend/df40/test/fake/wav2lip_cdf.txt",
+                "/home/antoine/balanced_df40_for_gend/df40/test/real/Celeb-real.txt",
+                "/home/antoine/balanced_df40_for_gend/df40/test/real/YouTube-real.txt",
             )
 
-        test_fr = Files(
-                MRAA.test + DANET.test + FaceVid2Vid.test + Fomm.test + Hyperreenact.test + Lia.test + MCNet.test + OneShotFree.test + Pirender.test + SadTalker.test + TPSM.test + Wav2Lip.test
+        val_fr = Files(
+                DANET.val + FaceVid2Vid.val + Fomm.val + Hyperreenact.val + Lia.val + MCNet.val + OneShotFree.val + Pirender.val + SadTalker.val + TPSM.val + Wav2Lip.val
             ).unique()
         
      # EFS
 
         class DiT:
-            test = Files(
+            val = Files(
                 "config/datasets/DF40/test/dit_cdf.txt",
                 "config/datasets/CDFv2/test/YouTube-real.txt",
                 "config/datasets/CDFv2/test/Celeb-real.txt",
             )
         class SiT:
-            test = Files(
+            val = Files(
                 "config/datasets/DF40/test/sit_cdf.txt",
                 "config/datasets/CDFv2/test/YouTube-real.txt",
                 "config/datasets/CDFv2/test/Celeb-real.txt",
             )
         class StyleGAN2:
-            test = Files(
+            val = Files(
                 "config/datasets/DF40/test/stylegan2_cdf.txt",
                 "config/datasets/CDFv2/test/YouTube-real.txt",
                 "config/datasets/CDFv2/test/Celeb-real.txt",
             )
         class StyleGAN3:
-            test = Files(
+            val = Files(
                 "config/datasets/DF40/test/stylegan3_cdf.txt",
                 "config/datasets/CDFv2/test/YouTube-real.txt",
                 "config/datasets/CDFv2/test/Celeb-real.txt",
             )
         class StyleGANXL:
-            test = Files(
+            val = Files(
                 "config/datasets/DF40/test/styleganxl_cdf.txt",
                 "config/datasets/CDFv2/test/YouTube-real.txt",
                 "config/datasets/CDFv2/test/Celeb-real.txt",
             )
         class VQGAN:
-            test = Files(
+            val = Files(
                 "config/datasets/DF40/test/vqgan_cdf.txt",
                 "config/datasets/CDFv2/test/YouTube-real.txt",
                 "config/datasets/CDFv2/test/Celeb-real.txt",
             )
         class DDIM:
-            test = Files(
+            val = Files(
                 "config/datasets/DF40/test/ddim_cdf.txt",
                 "config/datasets/CDFv2/test/YouTube-real.txt",
                 "config/datasets/CDFv2/test/Celeb-real.txt",
             )
         class Pixart:
-            test = Files(
+            val = Files(
                 "config/datasets/DF40/test/pixart_cdf.txt",
                 "config/datasets/CDFv2/test/YouTube-real.txt",
                 "config/datasets/CDFv2/test/Celeb-real.txt",
             )
         class RDDM:
-            test = Files(
+            val = Files(
                 "config/datasets/DF40/test/rddm_cdf.txt",
                 "config/datasets/CDFv2/test/YouTube-real.txt",
                 "config/datasets/CDFv2/test/Celeb-real.txt",
             )
         class SD21:
-            test = Files(
+            val = Files(
                 "config/datasets/DF40/test/sd21_cdf.txt",
                 "config/datasets/CDFv2/test/YouTube-real.txt",
                 "config/datasets/CDFv2/test/Celeb-real.txt",
             )
 
-        test_efs = Files(DiT.test + SiT.test + StyleGAN2.test + StyleGAN3.test + VQGAN.test + DDIM.test + Pixart.test + RDDM.test + SD21.test)
+        val_efs = Files(DiT.val + SiT.val + StyleGAN2.val + StyleGAN3.val + VQGAN.val + DDIM.val + Pixart.val + RDDM.val + SD21.val).unique()
+
+        val_cdf = Files(val_fs + val_fr)
 
         # @classmethod
         # def get_test_dict(cls) -> dict[str, list[str]]:
@@ -914,7 +931,10 @@ class DF40:
 class DF40Balanced:
     """https://arxiv.org/abs/2406.13495"""
 
+    # Train and val are combined below
+
     class FF:
+        
         # FS
         class BlendFace:
             train = Files(
@@ -1002,6 +1022,127 @@ class DF40Balanced:
 
         train_fs = Files(BlendFace.train + E4S.train + Facedancer.train + Faceswap.train + FSGan.train + InSwap.train + MobileSwap.train + SimSwap.train + Uniface.train)
         val_fs = Files(BlendFace.val + E4S.val + Facedancer.val + Faceswap.val + FSGan.val + InSwap.val + MobileSwap.val + SimSwap.val + Uniface.val)
+
+        #FR
+
+        class DANET:
+            train = Files(
+                "/home/antoine/balanced_df40_for_gend/df40/train/fake/danet_ff_fake_balanced_train.txt",
+                "/home/antoine/balanced_df40_for_gend/df40/train/real/danet_ff_real_balanced_train.txt",
+            )
+            val = Files(
+                "/home/antoine/balanced_df40_for_gend/df40/val/fake/danet_ff_fake_balanced_val.txt",
+                "/home/antoine/balanced_df40_for_gend/df40/val/real/danet_ff_real_balanced_val.txt",
+            )
+
+        class FaceVid2Vid:
+            train = Files(
+                "/home/antoine/balanced_df40_for_gend/df40/train/fake/facevid2vid_ff_fake_balanced_train.txt",
+                "/home/antoine/balanced_df40_for_gend/df40/train/real/facevid2vid_ff_real_balanced_train.txt",
+            )
+            val = Files(
+                "/home/antoine/balanced_df40_for_gend/df40/val/fake/facevid2vid_ff_fake_balanced_val.txt",
+                "/home/antoine/balanced_df40_for_gend/df40/val/real/facevid2vid_ff_real_balanced_val.txt",
+            )
+
+        class Fomm:
+            train = Files(
+                "/home/antoine/balanced_df40_for_gend/df40/train/fake/fomm_ff_fake_balanced_train.txt",
+                "/home/antoine/balanced_df40_for_gend/df40/train/real/fomm_ff_real_balanced_train.txt",
+            )
+            val = Files(
+                "/home/antoine/balanced_df40_for_gend/df40/val/fake/fomm_ff_fake_balanced_val.txt",
+                "/home/antoine/balanced_df40_for_gend/df40/val/real/fomm_ff_real_balanced_val.txt",
+            )
+
+        class Hyperreenact:
+            train = Files(
+                "/home/antoine/balanced_df40_for_gend/df40/train/fake/hyperreenact_ff_fake_balanced_train.txt",
+                "/home/antoine/balanced_df40_for_gend/df40/train/real/hyperreenact_ff_real_balanced_train.txt",
+            )
+            val = Files(
+                "/home/antoine/balanced_df40_for_gend/df40/val/fake/hyperreenact_ff_fake_balanced_val.txt",
+                "/home/antoine/balanced_df40_for_gend/df40/val/real/hyperreenact_ff_real_balanced_val.txt",
+            )
+
+        class Lia:
+            train = Files(
+                "/home/antoine/balanced_df40_for_gend/df40/train/fake/lia_ff_fake_balanced_train.txt",
+                "/home/antoine/balanced_df40_for_gend/df40/train/real/lia_ff_real_balanced_train.txt",
+            )
+            val = Files(
+                "/home/antoine/balanced_df40_for_gend/df40/val/fake/lia_ff_fake_balanced_val.txt",
+                "/home/antoine/balanced_df40_for_gend/df40/val/real/lia_ff_real_balanced_val.txt",
+            )
+
+        class MCNet:
+            train = Files(
+                "/home/antoine/balanced_df40_for_gend/df40/train/fake/mcnet_ff_fake_balanced_train.txt",
+                "/home/antoine/balanced_df40_for_gend/df40/train/real/mcnet_ff_real_balanced_train.txt",
+            )
+            val = Files(
+                "/home/antoine/balanced_df40_for_gend/df40/val/fake/mcnet_ff_fake_balanced_val.txt",
+                "/home/antoine/balanced_df40_for_gend/df40/val/real/mcnet_ff_real_balanced_val.txt",
+            )
+
+        class OneShotFree:
+            train = Files(
+                "/home/antoine/balanced_df40_for_gend/df40/train/fake/one_shot_free_ff_fake_balanced_train.txt",
+                "/home/antoine/balanced_df40_for_gend/df40/train/real/one_shot_free_ff_real_balanced_train.txt",
+            )
+            val = Files(
+                "/home/antoine/balanced_df40_for_gend/df40/val/fake/one_shot_free_ff_fake_balanced_val.txt",
+                "/home/antoine/balanced_df40_for_gend/df40/val/real/one_shot_free_ff_real_balanced_val.txt",
+            )
+
+        class Pirender:
+            train = Files(
+                "/home/antoine/balanced_df40_for_gend/df40/train/fake/pirender_ff_fake_balanced_train.txt",
+                "/home/antoine/balanced_df40_for_gend/df40/train/real/pirender_ff_real_balanced_train.txt",
+            )
+            val = Files(
+                "/home/antoine/balanced_df40_for_gend/df40/val/fake/pirender_ff_fake_balanced_val.txt",
+                "/home/antoine/balanced_df40_for_gend/df40/val/real/pirender_ff_real_balanced_val.txt",
+            )
+
+        class SadTalker:
+            train = Files(
+                "/home/antoine/balanced_df40_for_gend/df40/train/fake/sadtalker_ff_fake_balanced_train.txt",
+                "/home/antoine/balanced_df40_for_gend/df40/train/real/sadtalker_ff_real_balanced_train.txt",
+            )
+            val = Files(
+                "/home/antoine/balanced_df40_for_gend/df40/val/fake/sadtalker_ff_fake_balanced_val.txt",
+                "/home/antoine/balanced_df40_for_gend/df40/val/real/sadtalker_ff_real_balanced_val.txt",
+            )
+
+        class TPSM:
+            train = Files(
+                "/home/antoine/balanced_df40_for_gend/df40/train/fake/tpsm_ff_fake_balanced_train.txt",
+                "/home/antoine/balanced_df40_for_gend/df40/train/real/tpsm_ff_real_balanced_train.txt",
+            )
+            val = Files(
+                "/home/antoine/balanced_df40_for_gend/df40/val/fake/tpsm_ff_fake_balanced_val.txt",
+                "/home/antoine/balanced_df40_for_gend/df40/val/real/tpsm_ff_real_balanced_val.txt",
+            )
+
+        class Wav2Lip:
+            train = Files(
+                "/home/antoine/balanced_df40_for_gend/df40/train/fake/wav2lip_ff_fake_balanced_train.txt",
+                "/home/antoine/balanced_df40_for_gend/df40/train/real/wav2lip_ff_real_balanced_train.txt",
+            )
+            val = Files(
+                "/home/antoine/balanced_df40_for_gend/df40/val/fake/wav2lip_ff_fake_balanced_val.txt",
+                "/home/antoine/balanced_df40_for_gend/df40/val/real/wav2lip_ff_real_balanced_val.txt",
+            )
+
+        train_fr = Files(DANET.train + FaceVid2Vid.train + Fomm.train + Hyperreenact.train + Lia.train + MCNet.train + OneShotFree.train + Pirender.train + SadTalker.train + TPSM.train + Wav2Lip.train)
+        val_fr = Files(DANET.val + FaceVid2Vid.val + Fomm.val + Hyperreenact.val + Lia.val + MCNet.val + OneShotFree.val + Pirender.val + SadTalker.val + TPSM.val + Wav2Lip.val)
+
+        train_ff = Files(train_fs + train_fr)
+        val_ff = Files(val_fs + val_fr)
+
+        train_val_combined_ff = Files(train_ff + val_ff)
+        
 
 class FFv2:
     """

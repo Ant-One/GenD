@@ -18,10 +18,19 @@ rich_traceback.install()
 
 
 def load_third_party_model(config: Config) -> BaseDeepakeDetectionModel:
+    if "yermandy/" in config.checkpoint:
+        # https://huggingface.co/yermandy/models
+        from src.model.GenDHF import GenDHF
+
+        return GenDHF(config)
      # Détection basée sur le nom du fichier de poids
     if "clip" in config.checkpoint.lower():
         from src.model.Clip_large import CLIP
         return CLIP(config)
+    
+    if "pe" in config.checkpoint.lower():
+        from src.model.Perception import Perception
+        return Perception(config)
     
     if "xception" in config.checkpoint.lower():
         from src.model.Xception import Xception
@@ -47,13 +56,6 @@ def load_third_party_model(config: Config) -> BaseDeepakeDetectionModel:
         from src.model.FSFM import FSFM
 
         return FSFM(config)
-
-    if "yermandy/" in config.checkpoint:
-        # https://huggingface.co/yermandy/models
-        from src.model.GenDHF import GenDHF
-
-        return GenDHF(config)
-
 
     raise ValueError(f"Unknown third party model in checkpoint path: {config.checkpoint}")
 
