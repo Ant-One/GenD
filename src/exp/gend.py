@@ -1,20 +1,20 @@
 from .. import config as C
 from ..config import Config
 
-from ..utils.files import Files, DF40, DF40Balanced, FSh, UADFV, DFD, DFDC, FFIW
+from ..utils.files import Files, DF40, DF40Balanced, FSh, UADFV, DFD, DFDC, FFIW, FF, CDFv3, DeepSpeak_v1_1, DeepSpeak_v2
 
 experiments = {
 
-        "own-pe-v1": [
+        "tmp-clip-from-gend-v1": [
         Config(
-            backbone=C.Backbone.PerceptionEncoder_L_p14_336,
+            backbone=C.Backbone.CLIP_L_14,
             backbone_args=C.BackboneArgs(),
             head=C.Head.Linear,
             unfreeze_layers=["pre_layrnorm", "layer_norm1", "layer_norm2", "post_layernorm"],
             loss=C.Loss(ce_labels=1.0),
             run_dir="runs/train",
-            trn_files=DF40Balanced.FF.train_val_combined_ff,
-            val_files=DF40.CDF.val_cdf,
+            trn_files=FF.train,
+            val_files=Files(CDFv3.val + DeepSpeak_v1_1.val + DeepSpeak_v2.val + FFIW.val),
             tst_files=Files(UADFV.test + DFD.test + DFDC.test + FSh.test + FFIW.test),
             batch_size=96,
             mini_batch_size=96,

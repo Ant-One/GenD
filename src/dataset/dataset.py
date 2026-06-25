@@ -106,15 +106,15 @@ class DeepfakeDataset(BaseDataset):
 
         # Get labels from paths
         for path in files:
-            source = self.get_source_from_file(path)
+            #source = self.get_source_from_file(path)
 
             if binary:
-                if "real" in source:
+                if "real" in path:
                     source = "real"
-                elif "fake" in source:
+                elif "fake" in path:
                     source = "fake"
                 else:
-                    logger.print_error(f"{path} is not real or fake")
+                    logger.print_error(f"{path} is not real or fake (source = {source})")
                     import sys
                     sys.exit("I do not know how to stop the program otherwise.")
 
@@ -176,7 +176,11 @@ class DeepfakeDataset(BaseDataset):
         sources = [self.get_source_from_file(file) for file in self.files]
         sources = np.unique(sources)
 
+        #breakpoint()
+
         assert any("real" in g for g in sources), "No real source found"
+        #assert any("fake" in g for g in sources), "No fake source found"
+
         sources = [str(g) for g in sources]
 
         # Map all real sources to 0 and fake sources to 1, 2, 3, ...
@@ -196,28 +200,35 @@ class DeepfakeDataset(BaseDataset):
 
     @staticmethod
     def get_frame_from_file(file_path: str) -> str:
-        # ... / <dataset_name> / <source_name> / <video_name> / <frame_name>
+        # ... / <dataset_name> / <fake/real> / <source_name> / <video_name> / <frame_name>
         # returns <frame_name>
         return file_path.split("/")[-1]
 
     @staticmethod
     def get_video_from_file(file_path: str) -> str:
-        # ... / <dataset_name> / <source_name> / <video_name> / <frame_name>
+        # ... / <dataset_name> / <fake/real> / <source_name> / <video_name> / <frame_name>
         # returns <video_name>
         return file_path.split("/")[-2]
 
     @staticmethod
     def get_source_from_file(file_path: str) -> str:
-        # ... / <dataset_name> / <source_name> / <video_name> / <frame_name>
+        # ... / <dataset_name> / <fake/real> / <source_name> / <video_name> / <frame_name>
         # returns <source_name>
 
         return file_path.split("/")[-3]
+    
+    @staticmethod
+    def get_type_from_file(file_path: str) -> str:
+        # ... / <dataset_name> / <fake/real> / <source_name> / <video_name> / <frame_name>
+        # returns <real/fake>
+
+        return file_path.split("/")[-4]
 
     @staticmethod
     def get_dataset_from_file(file_path: str) -> str:
-        # ... / <dataset_name> / <source_name> / <video_name> / <frame_name>
+        # ... / <dataset_name> / <fake/real> / <source_name> / <video_name> / <frame_name>
         # returns <dataset_name>
-        return file_path.split("/")[-4]
+        return file_path.split("/")[-5]
 
     @staticmethod
     def get_video_path(file_path: str) -> str:

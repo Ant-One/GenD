@@ -88,7 +88,7 @@ class FF:
         return f.replace("/FF/", "/FF-rmbg-x1.5/")
 
     test = Files(DF.test + F2F.test + FS.test + NT.test).unique()
-    train = Files(DF.train + F2F.train + FS.train + NT.train)
+    train = Files(DF.train + F2F.train + FS.train + NT.train).unique()
     val = test.map(to_val)
 
 
@@ -123,6 +123,11 @@ class CDFv3:
         """Face-swap"""
 
         class CDFv2:
+            val = Files(
+                "config/datasets/val-from-gend/CDFv3-x1.3-th0.5-all/celebdf-v2.txt",
+                "config/datasets/val-from-gend/CDFv3-x1.3-th0.5-all/celeb-real.txt",
+                "config/datasets/val-from-gend/CDFv3-x1.3-th0.5-all/youtube-real.txt"
+            )
             test = Files(
                 "config/datasets/CDFv3/test/Celeb-DF-v2.txt",
                 "config/datasets/CDFv3/test/Celeb-real.txt",
@@ -130,6 +135,9 @@ class CDFv3:
             )
 
         class BlendFace:
+            val = Files(
+                "config/datasets/val-from-gend/CDFv3-x1.3-th0.5-all/blendface.txt",
+            )
             test = Files(
                 "config/datasets/CDFv3/test/BlendFace.txt",
                 "config/datasets/CDFv3/test/Celeb-real.txt",
@@ -137,6 +145,9 @@ class CDFv3:
             )
 
         class GHOST:
+            val = Files(
+                "config/datasets/val-from-gend/CDFv3-x1.3-th0.5-all/ghost.txt",
+            )
             test = Files(
                 "config/datasets/CDFv3/test/GHOST.txt",
                 "config/datasets/CDFv3/test/Celeb-real.txt",
@@ -144,6 +155,9 @@ class CDFv3:
             )
 
         class HifiFace:
+            val = Files(
+                "config/datasets/val-from-gend/CDFv3-x1.3-th0.5-all/hififace.txt",
+            )
             test = Files(
                 "config/datasets/CDFv3/test/HifiFace.txt",
                 "config/datasets/CDFv3/test/Celeb-real.txt",
@@ -151,6 +165,9 @@ class CDFv3:
             )
 
         class InSwapper:
+            val = Files(
+                "config/datasets/val-from-gend/CDFv3-x1.3-th0.5-all/inswapper.txt",
+            )
             test = Files(
                 "config/datasets/CDFv3/test/InSwapper.txt",
                 "config/datasets/CDFv3/test/Celeb-real.txt",
@@ -158,6 +175,9 @@ class CDFv3:
             )
 
         class MobileFaceSwap:
+            val = Files(
+                "config/datasets/val-from-gend/CDFv3-x1.3-th0.5-all/mobilefaceswap.txt",
+            )
             test = Files(
                 "config/datasets/CDFv3/test/MobileFaceSwap.txt",
                 "config/datasets/CDFv3/test/Celeb-real.txt",
@@ -165,6 +185,9 @@ class CDFv3:
             )
 
         class SimSwap:
+            val = Files(
+                "config/datasets/val-from-gend/CDFv3-x1.3-th0.5-all/simswap.txt",
+            )
             test = Files(
                 "config/datasets/CDFv3/test/SimSwap.txt",
                 "config/datasets/CDFv3/test/Celeb-real.txt",
@@ -172,11 +195,16 @@ class CDFv3:
             )
 
         class UniFace:
+            val = Files(
+                "config/datasets/val-from-gend/CDFv3-x1.3-th0.5-all/uniface.txt",
+            )
             test = Files(
                 "config/datasets/CDFv3/test/UniFace.txt",
                 "config/datasets/CDFv3/test/Celeb-real.txt",
                 "config/datasets/CDFv3/test/YouTube-real.txt",
             )
+
+        val = Files(CDFv2.val + BlendFace.val + GHOST.val + HifiFace.val + InSwapper.val + MobileFaceSwap.val + SimSwap.val + UniFace.val).unique()
 
         test = Files(
             CDFv2.test
@@ -193,6 +221,9 @@ class CDFv3:
         """Face Reenectment"""
 
         class DaGAN:
+            val = Files(
+                "config/datasets/val-from-gend/CDFv3-x1.3-th0.5-all/dagan.txt",
+            )
             test = Files(
                 "config/datasets/CDFv3/test/DaGAN.txt",
                 "config/datasets/CDFv3/test/Celeb-real.txt",
@@ -200,6 +231,9 @@ class CDFv3:
             )
 
         class FSRT:
+            val = Files(
+                "config/datasets/val-from-gend/CDFv3-x1.3-th0.5-all/fsrt.txt",
+            )
             test = Files(
                 "config/datasets/CDFv3/test/FSRT.txt",
                 "config/datasets/CDFv3/test/Celeb-real.txt",
@@ -207,6 +241,9 @@ class CDFv3:
             )
 
         class HyperReenact:
+            val = Files(
+                "config/datasets/val-from-gend/CDFv3-x1.3-th0.5-all/hyperreenact.txt",
+            )
             test = Files(
                 "config/datasets/CDFv3/test/HyperReenact.txt",
                 "config/datasets/CDFv3/test/Celeb-real.txt",
@@ -214,6 +251,9 @@ class CDFv3:
             )
 
         class LIA:
+            val = Files(
+                "config/datasets/val-from-gend/CDFv3-x1.3-th0.5-all/lia.txt",
+            )
             test = Files(
                 "config/datasets/CDFv3/test/LIA.txt",
                 "config/datasets/CDFv3/test/Celeb-real.txt",
@@ -221,6 +261,9 @@ class CDFv3:
             )
 
         class LivePortrait:
+            val = Files(
+                "config/datasets/val-from-gend/CDFv3-x1.3-th0.5-all/liveportrait.txt",
+            )
             test = Files(
                 "config/datasets/CDFv3/test/LivePortrait.txt",
                 "config/datasets/CDFv3/test/Celeb-real.txt",
@@ -228,6 +271,9 @@ class CDFv3:
             )
 
         class MCNET:
+            val = Files(
+                "config/datasets/val-from-gend/CDFv3-x1.3-th0.5-all/mcnet.txt",
+            )
             test = Files(
                 "config/datasets/CDFv3/test/MCNET.txt",
                 "config/datasets/CDFv3/test/Celeb-real.txt",
@@ -235,11 +281,16 @@ class CDFv3:
             )
 
         class TPSMM:
+            val = Files(
+                "config/datasets/val-from-gend/CDFv3-x1.3-th0.5-all/tpsmm.txt",
+            )
             test = Files(
                 "config/datasets/CDFv3/test/TPSMM.txt",
                 "config/datasets/CDFv3/test/Celeb-real.txt",
                 "config/datasets/CDFv3/test/YouTube-real.txt",
             )
+
+        val = Files(DaGAN.val + FSRT.val + HyperReenact.val + LIA.val + LivePortrait.val + MCNET.val + TPSMM.val).unique()
 
         test = Files(
             DaGAN.test + FSRT.test + HyperReenact.test + LIA.test + LivePortrait.test + MCNET.test + TPSMM.test
@@ -249,6 +300,9 @@ class CDFv3:
         """Talking Face"""
 
         class AniTalker:
+            val = Files(
+                "config/datasets/val-from-gend/CDFv3-x1.3-th0.5-all/anitalker.txt",
+            )
             test = Files(
                 "config/datasets/CDFv3/test/AniTalker.txt",
                 "config/datasets/CDFv3/test/Celeb-real.txt",
@@ -256,6 +310,9 @@ class CDFv3:
             )
 
         class EchoMimic:
+            val = Files(
+                "config/datasets/val-from-gend/CDFv3-x1.3-th0.5-all/echomimic.txt",
+            )
             test = Files(
                 "config/datasets/CDFv3/test/EchoMimic.txt",
                 "config/datasets/CDFv3/test/Celeb-real.txt",
@@ -263,6 +320,9 @@ class CDFv3:
             )
 
         class EDTalk:
+            val = Files(
+                "config/datasets/val-from-gend/CDFv3-x1.3-th0.5-all/edtalk.txt",
+            )
             test = Files(
                 "config/datasets/CDFv3/test/EDTalk.txt",
                 "config/datasets/CDFv3/test/Celeb-real.txt",
@@ -270,6 +330,9 @@ class CDFv3:
             )
 
         class FLOAT:
+            val = Files(
+                "config/datasets/val-from-gend/CDFv3-x1.3-th0.5-all/float.txt",
+            )
             test = Files(
                 "config/datasets/CDFv3/test/FLOAT.txt",
                 "config/datasets/CDFv3/test/Celeb-real.txt",
@@ -277,6 +340,9 @@ class CDFv3:
             )
 
         class IP_LAP:
+            val = Files(
+                "config/datasets/val-from-gend/CDFv3-x1.3-th0.5-all/iplap.txt",
+            )
             test = Files(
                 "config/datasets/CDFv3/test/IP_LAP.txt",
                 "config/datasets/CDFv3/test/Celeb-real.txt",
@@ -284,6 +350,9 @@ class CDFv3:
             )
 
         class Real3DPortrait:
+            val = Files(
+                "config/datasets/val-from-gend/CDFv3-x1.3-th0.5-all/real3dportrait.txt",
+            )
             test = Files(
                 "config/datasets/CDFv3/test/Real3DPortrait.txt",
                 "config/datasets/CDFv3/test/Celeb-real.txt",
@@ -291,11 +360,16 @@ class CDFv3:
             )
 
         class SadTalker:
+            val = Files(
+                "config/datasets/val-from-gend/CDFv3-x1.3-th0.5-all/sadtalker.txt",
+            )
             test = Files(
                 "config/datasets/CDFv3/test/SadTalker.txt",
                 "config/datasets/CDFv3/test/Celeb-real.txt",
                 "config/datasets/CDFv3/test/YouTube-real.txt",
             )
+
+        val = Files(AniTalker.val + EchoMimic.val + EDTalk.val + FLOAT.val + IP_LAP.val + Real3DPortrait.val + SadTalker.val).unique()
 
         test = Files(
             AniTalker.test
@@ -324,6 +398,8 @@ class CDFv3:
 
     def to_x1_3_th0_5_all(f) -> str:
         return f.replace("/CDFv3/", "/CDFv3-x1.3-th0.5-all/")
+    
+    val = Files(FS.val + FR.val + TF.val).unique()
 
     test = Files(FS.test + FR.test + TF.test).unique()
     train = test.map(to_train)
@@ -363,15 +439,15 @@ class CDFv3:
 
 class DFD:
     test = Files(
-        "/home/antoine/GenD/config/datasets/test-from-gend/DFD_fake.txt",
-        "/home/antoine/GenD/config/datasets/test-from-gend/DFD_real.txt",
+        "config/datasets/test-from-gend/DFD_fake.txt",
+        "config/datasets/test-from-gend/DFD_real.txt",
     )
 
 
 class DFDC:
     test = Files(
-        "/home/antoine/GenD/config/datasets/test-from-gend/DFDC_fake.txt",
-        "/home/antoine/GenD/config/datasets/test-from-gend/DFDC_real.txt",
+        "config/datasets/test-from-gend/DFDC_fake.txt",
+        "config/datasets/test-from-gend/DFDC_real.txt",
     )
 
 
@@ -382,8 +458,8 @@ class FSh:
     """
 
     test = Files(
-        "/home/antoine/GenD/config/datasets/test-from-gend/FSh_test_real.txt",
-        "/home/antoine/GenD/config/datasets/test-from-gend/FSh_test_fake.txt",
+        "config/datasets/test-from-gend/FSh_test_real.txt",
+        "config/datasets/test-from-gend/FSh_test_fake.txt",
     )
 
 
@@ -391,8 +467,8 @@ class UADFV:
     """https://arxiv.org/abs/1806.02877"""
 
     test = Files(
-        "/home/antoine/GenD/config/datasets/test-from-gend/UADFV_fake.txt",
-        "/home/antoine/GenD/config/datasets/test-from-gend/UADFV_real.txt",
+        "config/datasets/test-from-gend/UADFV_fake.txt",
+        "config/datasets/test-from-gend/UADFV_real.txt",
     )
 
 
@@ -412,13 +488,13 @@ class FFIW:
     """https://arxiv.org/abs/2103.16076"""
 
     test = Files(
-        "/home/antoine/GenD/config/datasets/test-from-gend/FFIW_fake.txt",
-        "/home/antoine/GenD/config/datasets/test-from-gend/FFIW_real.txt",
+        "config/datasets/test-from-gend/FFIW_fake.txt",
+        "config/datasets/test-from-gend/FFIW_real.txt",
     )
 
     val = Files(
-        "config/datasets/FFIW/val-fake.txt",
-        "config/datasets/FFIW/val-real.txt",
+        "config/datasets/val-from-gend/FFIW/fake.txt",
+        "config/datasets/val-from-gend/FFIW/real.txt",
     )
 
     train = Files(
@@ -442,6 +518,15 @@ class FFIW:
 class DeepSpeak_v1_1:
     """https://arxiv.org/abs/2408.05366"""
 
+    val = Files(
+        "config/datasets/val-from-gend/DeepSpeak-1.1/facefusion_gan.txt",
+        "config/datasets/val-from-gend/DeepSpeak-1.1/facefusion_live.txt",
+        "config/datasets/val-from-gend/DeepSpeak-1.1/facefusion.txt",
+        "config/datasets/val-from-gend/DeepSpeak-1.1/real.txt",
+        "config/datasets/val-from-gend/DeepSpeak-1.1/retalking.txt",
+        "config/datasets/val-from-gend/DeepSpeak-1.1/wav2lip.txt",
+        )
+
     test = Files(
         "config/datasets/DeepSpeak-1.1/test/test-facefusion_gan.txt",
         "config/datasets/DeepSpeak-1.1/test/test-facefusion_live.txt",
@@ -462,6 +547,16 @@ class DeepSpeak_v1_1:
 
 class DeepSpeak_v2:
     """https://arxiv.org/abs/2408.05366"""
+
+    val = Files(
+        "config/datasets/val-from-gend/DeepSpeak-2.0/diff2lip.txt",
+        "config/datasets/val-from-gend/DeepSpeak-2.0/facefusion.txt",
+        "config/datasets/val-from-gend/DeepSpeak-2.0/facefusion.txt",
+        "config/datasets/val-from-gend/DeepSpeak-2.0/hellomeme.txt",
+        "config/datasets/val-from-gend/DeepSpeak-2.0/latentsync.txt",
+        "config/datasets/val-from-gend/DeepSpeak-2.0/memo.txt",
+        "config/datasets/val-from-gend/DeepSpeak-2.0/real.txt",
+        )
 
     test = Files(
         "config/datasets/DeepSpeak-2.0/test/test-diff2lip.txt",
