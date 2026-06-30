@@ -129,9 +129,9 @@ class CDFv3:
                 "config/datasets/val-from-gend/CDFv3-x1.3-th0.5-all/youtube-real.txt"
             )
             test = Files(
-                "config/datasets/CDFv3/test/Celeb-DF-v2.txt",
-                "config/datasets/CDFv3/test/Celeb-real.txt",
-                "config/datasets/CDFv3/test/YouTube-real.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_Celeb-DF-v2_fake.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_Celeb-real_real.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_YouTube-real_real.txt",
             )
 
         class BlendFace:
@@ -139,9 +139,9 @@ class CDFv3:
                 "config/datasets/val-from-gend/CDFv3-x1.3-th0.5-all/blendface.txt",
             )
             test = Files(
-                "config/datasets/CDFv3/test/BlendFace.txt",
-                "config/datasets/CDFv3/test/Celeb-real.txt",
-                "config/datasets/CDFv3/test/YouTube-real.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_BlendFace_fake.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_Celeb-real_real.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_YouTube-real_real.txt",
             )
 
         class GHOST:
@@ -149,9 +149,9 @@ class CDFv3:
                 "config/datasets/val-from-gend/CDFv3-x1.3-th0.5-all/ghost.txt",
             )
             test = Files(
-                "config/datasets/CDFv3/test/GHOST.txt",
-                "config/datasets/CDFv3/test/Celeb-real.txt",
-                "config/datasets/CDFv3/test/YouTube-real.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_GHOST_fake.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_Celeb-real_real.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_YouTube-real_real.txt",
             )
 
         class HifiFace:
@@ -159,9 +159,9 @@ class CDFv3:
                 "config/datasets/val-from-gend/CDFv3-x1.3-th0.5-all/hififace.txt",
             )
             test = Files(
-                "config/datasets/CDFv3/test/HifiFace.txt",
-                "config/datasets/CDFv3/test/Celeb-real.txt",
-                "config/datasets/CDFv3/test/YouTube-real.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_HifiFace_fake.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_Celeb-real_real.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_YouTube-real_real.txt",
             )
 
         class InSwapper:
@@ -169,9 +169,9 @@ class CDFv3:
                 "config/datasets/val-from-gend/CDFv3-x1.3-th0.5-all/inswapper.txt",
             )
             test = Files(
-                "config/datasets/CDFv3/test/InSwapper.txt",
-                "config/datasets/CDFv3/test/Celeb-real.txt",
-                "config/datasets/CDFv3/test/YouTube-real.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_InSwapper_fake.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_Celeb-real_real.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_YouTube-real_real.txt",
             )
 
         class MobileFaceSwap:
@@ -179,9 +179,9 @@ class CDFv3:
                 "config/datasets/val-from-gend/CDFv3-x1.3-th0.5-all/mobilefaceswap.txt",
             )
             test = Files(
-                "config/datasets/CDFv3/test/MobileFaceSwap.txt",
-                "config/datasets/CDFv3/test/Celeb-real.txt",
-                "config/datasets/CDFv3/test/YouTube-real.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_MobileFaceSwap_fake.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_Celeb-real_real.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_YouTube-real_real.txt",
             )
 
         class SimSwap:
@@ -189,9 +189,9 @@ class CDFv3:
                 "config/datasets/val-from-gend/CDFv3-x1.3-th0.5-all/simswap.txt",
             )
             test = Files(
-                "config/datasets/CDFv3/test/SimSwap.txt",
-                "config/datasets/CDFv3/test/Celeb-real.txt",
-                "config/datasets/CDFv3/test/YouTube-real.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_SimSwap_fake.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_Celeb-real_real.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_YouTube-real_real.txt",
             )
 
         class UniFace:
@@ -199,9 +199,9 @@ class CDFv3:
                 "config/datasets/val-from-gend/CDFv3-x1.3-th0.5-all/uniface.txt",
             )
             test = Files(
-                "config/datasets/CDFv3/test/UniFace.txt",
-                "config/datasets/CDFv3/test/Celeb-real.txt",
-                "config/datasets/CDFv3/test/YouTube-real.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_UniFace_fake.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_Celeb-real_real.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_YouTube-real_real.txt",
             )
 
         val = Files(CDFv2.val + BlendFace.val + GHOST.val + HifiFace.val + InSwapper.val + MobileFaceSwap.val + SimSwap.val + UniFace.val).unique()
@@ -225,9 +225,9 @@ class CDFv3:
                 "config/datasets/val-from-gend/CDFv3-x1.3-th0.5-all/dagan.txt",
             )
             test = Files(
-                "config/datasets/CDFv3/test/DaGAN.txt",
-                "config/datasets/CDFv3/test/Celeb-real.txt",
-                "config/datasets/CDFv3/test/YouTube-real.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_DaGAN_fake.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_Celeb-real_real.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_YouTube-real_real.txt",
             )
 
         class FSRT:
@@ -235,9 +235,9 @@ class CDFv3:
                 "config/datasets/val-from-gend/CDFv3-x1.3-th0.5-all/fsrt.txt",
             )
             test = Files(
-                "config/datasets/CDFv3/test/FSRT.txt",
-                "config/datasets/CDFv3/test/Celeb-real.txt",
-                "config/datasets/CDFv3/test/YouTube-real.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_FSRT_fake.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_Celeb-real_real.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_YouTube-real_real.txt",
             )
 
         class HyperReenact:
@@ -245,9 +245,9 @@ class CDFv3:
                 "config/datasets/val-from-gend/CDFv3-x1.3-th0.5-all/hyperreenact.txt",
             )
             test = Files(
-                "config/datasets/CDFv3/test/HyperReenact.txt",
-                "config/datasets/CDFv3/test/Celeb-real.txt",
-                "config/datasets/CDFv3/test/YouTube-real.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_HyperReenact_fake.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_Celeb-real_real.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_YouTube-real_real.txt",
             )
 
         class LIA:
@@ -255,9 +255,9 @@ class CDFv3:
                 "config/datasets/val-from-gend/CDFv3-x1.3-th0.5-all/lia.txt",
             )
             test = Files(
-                "config/datasets/CDFv3/test/LIA.txt",
-                "config/datasets/CDFv3/test/Celeb-real.txt",
-                "config/datasets/CDFv3/test/YouTube-real.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_LIA_fake.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_Celeb-real_real.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_YouTube-real_real.txt",
             )
 
         class LivePortrait:
@@ -265,9 +265,9 @@ class CDFv3:
                 "config/datasets/val-from-gend/CDFv3-x1.3-th0.5-all/liveportrait.txt",
             )
             test = Files(
-                "config/datasets/CDFv3/test/LivePortrait.txt",
-                "config/datasets/CDFv3/test/Celeb-real.txt",
-                "config/datasets/CDFv3/test/YouTube-real.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_LivePortrait_fake.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_Celeb-real_real.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_YouTube-real_real.txt",
             )
 
         class MCNET:
@@ -275,9 +275,9 @@ class CDFv3:
                 "config/datasets/val-from-gend/CDFv3-x1.3-th0.5-all/mcnet.txt",
             )
             test = Files(
-                "config/datasets/CDFv3/test/MCNET.txt",
-                "config/datasets/CDFv3/test/Celeb-real.txt",
-                "config/datasets/CDFv3/test/YouTube-real.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_MCNET_fake.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_Celeb-real_real.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_YouTube-real_real.txt",
             )
 
         class TPSMM:
@@ -285,9 +285,9 @@ class CDFv3:
                 "config/datasets/val-from-gend/CDFv3-x1.3-th0.5-all/tpsmm.txt",
             )
             test = Files(
-                "config/datasets/CDFv3/test/TPSMM.txt",
-                "config/datasets/CDFv3/test/Celeb-real.txt",
-                "config/datasets/CDFv3/test/YouTube-real.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_TPSMM_fake.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_Celeb-real_real.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_YouTube-real_real.txt",
             )
 
         val = Files(DaGAN.val + FSRT.val + HyperReenact.val + LIA.val + LivePortrait.val + MCNET.val + TPSMM.val).unique()
@@ -304,9 +304,9 @@ class CDFv3:
                 "config/datasets/val-from-gend/CDFv3-x1.3-th0.5-all/anitalker.txt",
             )
             test = Files(
-                "config/datasets/CDFv3/test/AniTalker.txt",
-                "config/datasets/CDFv3/test/Celeb-real.txt",
-                "config/datasets/CDFv3/test/YouTube-real.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_AniTalker_fake.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_Celeb-real_real.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_YouTube-real_real.txt",
             )
 
         class EchoMimic:
@@ -314,9 +314,9 @@ class CDFv3:
                 "config/datasets/val-from-gend/CDFv3-x1.3-th0.5-all/echomimic.txt",
             )
             test = Files(
-                "config/datasets/CDFv3/test/EchoMimic.txt",
-                "config/datasets/CDFv3/test/Celeb-real.txt",
-                "config/datasets/CDFv3/test/YouTube-real.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_EchoMimic_fake.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_Celeb-real_real.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_YouTube-real_real.txt",
             )
 
         class EDTalk:
@@ -324,9 +324,9 @@ class CDFv3:
                 "config/datasets/val-from-gend/CDFv3-x1.3-th0.5-all/edtalk.txt",
             )
             test = Files(
-                "config/datasets/CDFv3/test/EDTalk.txt",
-                "config/datasets/CDFv3/test/Celeb-real.txt",
-                "config/datasets/CDFv3/test/YouTube-real.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_EDTalk_fake.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_Celeb-real_real.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_YouTube-real_real.txt",
             )
 
         class FLOAT:
@@ -334,9 +334,9 @@ class CDFv3:
                 "config/datasets/val-from-gend/CDFv3-x1.3-th0.5-all/float.txt",
             )
             test = Files(
-                "config/datasets/CDFv3/test/FLOAT.txt",
-                "config/datasets/CDFv3/test/Celeb-real.txt",
-                "config/datasets/CDFv3/test/YouTube-real.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_FLOAT_fake.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_Celeb-real_real.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_YouTube-real_real.txt",
             )
 
         class IP_LAP:
@@ -344,9 +344,9 @@ class CDFv3:
                 "config/datasets/val-from-gend/CDFv3-x1.3-th0.5-all/iplap.txt",
             )
             test = Files(
-                "config/datasets/CDFv3/test/IP_LAP.txt",
-                "config/datasets/CDFv3/test/Celeb-real.txt",
-                "config/datasets/CDFv3/test/YouTube-real.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_IP_LAP_fake.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_Celeb-real_real.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_YouTube-real_real.txt",
             )
 
         class Real3DPortrait:
@@ -354,9 +354,9 @@ class CDFv3:
                 "config/datasets/val-from-gend/CDFv3-x1.3-th0.5-all/real3dportrait.txt",
             )
             test = Files(
-                "config/datasets/CDFv3/test/Real3DPortrait.txt",
-                "config/datasets/CDFv3/test/Celeb-real.txt",
-                "config/datasets/CDFv3/test/YouTube-real.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_Real3DPortrait_fake.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_Celeb-real_real.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_YouTube-real_real.txt",
             )
 
         class SadTalker:
@@ -364,9 +364,9 @@ class CDFv3:
                 "config/datasets/val-from-gend/CDFv3-x1.3-th0.5-all/sadtalker.txt",
             )
             test = Files(
-                "config/datasets/CDFv3/test/SadTalker.txt",
-                "config/datasets/CDFv3/test/Celeb-real.txt",
-                "config/datasets/CDFv3/test/YouTube-real.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_SadTalker_fake.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_Celeb-real_real.txt",
+                "config/datasets/test-from-gend/CDFv3/CDFv3_YouTube-real_real.txt",
             )
 
         val = Files(AniTalker.val + EchoMimic.val + EDTalk.val + FLOAT.val + IP_LAP.val + Real3DPortrait.val + SadTalker.val).unique()
@@ -439,8 +439,8 @@ class CDFv3:
 
 class DFD:
     test = Files(
-        "config/datasets/test-from-gend/DFD_fake.txt",
-        "config/datasets/test-from-gend/DFD_real.txt",
+        "config/datasets/test-from-gend/DFD/DFD_fake.txt",
+        "config/datasets/test-from-gend/DFD/DFD_real.txt",
     )
 
 
@@ -458,8 +458,8 @@ class FSh:
     """
 
     test = Files(
-        "config/datasets/test-from-gend/FSh_test_real.txt",
-        "config/datasets/test-from-gend/FSh_test_fake.txt",
+        "config/datasets/test-from-gend/FSh/FSh_fake.txt",
+        "config/datasets/test-from-gend/FSh/FSh_real.txt",
     )
 
 
@@ -476,11 +476,11 @@ class DFDM:
     """https://arxiv.org/abs/2202.12951"""
 
     test = Files(
-        "config/datasets/DFDM/all/dfaker.txt",
-        "config/datasets/DFDM/all/dfl.txt",
-        "config/datasets/DFDM/all/iae.txt",
-        "config/datasets/DFDM/all/lightweight.txt",
-        "config/datasets/CDFv2/all/Celeb-real.txt",
+        "config/datasets/test-from-gend/DFDM/DFDM_dfaker_fake.txt",
+        "config/datasets/test-from-gend/DFDM/DFDM_dfl_fake.txt",
+        "config/datasets/test-from-gend/DFDM/DFDM_iae_fake.txt",
+        "config/datasets/test-from-gend/DFDM/DFDM_lightweight_fake.txt",
+        "config/datasets/test-from-gend/CDFv2/Celeb_real.txt",
     )
 
 
@@ -488,8 +488,8 @@ class FFIW:
     """https://arxiv.org/abs/2103.16076"""
 
     test = Files(
-        "config/datasets/test-from-gend/FFIW_fake.txt",
-        "config/datasets/test-from-gend/FFIW_real.txt",
+        "config/datasets/test-from-gend/FFIW/FFIW_fake.txt",
+        "config/datasets/test-from-gend/FFIW/FFIW_real.txt",
     )
 
     val = Files(
@@ -528,12 +528,12 @@ class DeepSpeak_v1_1:
         )
 
     test = Files(
-        "config/datasets/DeepSpeak-1.1/test/test-facefusion_gan.txt",
-        "config/datasets/DeepSpeak-1.1/test/test-facefusion_live.txt",
-        "config/datasets/DeepSpeak-1.1/test/test-facefusion.txt",
-        "config/datasets/DeepSpeak-1.1/test/test-real.txt",
-        "config/datasets/DeepSpeak-1.1/test/test-retalking.txt",
-        "config/datasets/DeepSpeak-1.1/test/test-wav2lip.txt",
+        "config/datasets/test-from-gend/DeepSpeak-1/DeepSpeak-1_test-facefusion_fake.txt",
+        "config/datasets/test-from-gend/DeepSpeak-1/DeepSpeak-1_test-facefusion_gan_fake.txt",
+        "config/datasets/test-from-gend/DeepSpeak-1/DeepSpeak-1_test-facefusion_live_fake.txt",
+        "config/datasets/test-from-gend/DeepSpeak-1/DeepSpeak-1_test-real_real.txt",
+        "config/datasets/test-from-gend/DeepSpeak-1/DeepSpeak-1_test-retalking_fake.txt",
+        "config/datasets/test-from-gend/DeepSpeak-1/DeepSpeak-1_test-wav2lip_fake.txt",
     )
 
     train = test.map(lambda x: x.replace("/test/test-", "/train/train-"))
@@ -559,13 +559,13 @@ class DeepSpeak_v2:
         )
 
     test = Files(
-        "config/datasets/DeepSpeak-2.0/test/test-diff2lip.txt",
-        "config/datasets/DeepSpeak-2.0/test/test-facefusion.txt",
-        "config/datasets/DeepSpeak-2.0/test/test-hellomeme.txt",
-        "config/datasets/DeepSpeak-2.0/test/test-latentsync.txt",
-        "config/datasets/DeepSpeak-2.0/test/test-liveportrait.txt",
-        "config/datasets/DeepSpeak-2.0/test/test-memo.txt",
-        "config/datasets/DeepSpeak-2.0/test/test-real.txt",
+        "config/datasets/test-from-gend/DeepSpeak-2/DeepSpeak-2_test-diff2lip_fake.txt",
+        "config/datasets/test-from-gend/DeepSpeak-2/DeepSpeak-2_test-facefusion_fake.txt",
+        "config/datasets/test-from-gend/DeepSpeak-2/DeepSpeak-2_test-hellomeme_fake.txt",
+        "config/datasets/test-from-gend/DeepSpeak-2/DeepSpeak-2_test-latentsync_fake.txt",
+        "config/datasets/test-from-gend/DeepSpeak-2/DeepSpeak-2_test-liveportrait_fake.txt",
+        "config/datasets/test-from-gend/DeepSpeak-2/DeepSpeak-2_test-memo_fake.txt",
+        "config/datasets/test-from-gend/DeepSpeak-2/DeepSpeak-2_test-real_real.txt",
     )
 
     train = test.map(lambda x: x.replace("/test/test-", "/train/train-"))
@@ -581,18 +581,20 @@ class KoDF:
     """https://arxiv.org/abs/2103.10094"""
 
     test = Files(
-        "config/datasets/KoDF/real.txt",
-        "config/datasets/KoDF/fake-audio-driven.txt",
-        "config/datasets/KoDF/fake-dffs.txt",
-        "config/datasets/KoDF/fake-dfl.txt",
-        "config/datasets/KoDF/fake-fo.txt",
-        "config/datasets/KoDF/fake-fsgan.txt",
+        "config/datasets/test-from-gend/KoDF/KoDF_fake-audio-driven_fake.txt",
+        "config/datasets/test-from-gend/KoDF/KoDF_fake-dffs_fake.txt",
+        "config/datasets/test-from-gend/KoDF/KoDF_fake-dfl_fake.txt",
+        "config/datasets/test-from-gend/KoDF/KoDF_fake-fo_fake.txt",
+        "config/datasets/test-from-gend/KoDF/KoDF_fake-fsgan_fake.txt",
+        "config/datasets/test-from-gend/KoDF/KoDF_real-normal_real.txt",
     )
 
     adversarial = Files(
-        "config/datasets/KoDF/fake-adv.txt",
-        "config/datasets/KoDF/real-adv.txt",
+        "config/datasets/test-from-gend/KoDF/KoDF_fake-adv_fake.txt",
+        "config/datasets/test-from-gend/KoDF/KoDF_real-adv_real.txt",
     )
+
+    test_all = Files(test + adversarial)
 
 
 class FaceFusion:
@@ -631,37 +633,37 @@ class FakeAVCeleb:
     """https://arxiv.org/abs/2108.05080"""
 
     test = Files(
-        "config/datasets/FakeAVCeleb/FV-FA-faceswap-wav2lip.txt",
-        "config/datasets/FakeAVCeleb/FV-FA-fsgan-wav2lip.txt",
-        "config/datasets/FakeAVCeleb/FV-FA-wav2lip.txt",
-        "config/datasets/FakeAVCeleb/FV-RA-faceswap.txt",
-        "config/datasets/FakeAVCeleb/FV-RA-fsgan.txt",
-        "config/datasets/FakeAVCeleb/FV-RA-wav2lip.txt",
-        "config/datasets/FakeAVCeleb/RV-RA-real.txt",
+        "config/datasets/test-from-gend/FakeAVCeleb/FakeAVCeleb_FV-FA-faceswap-wav2lip_fake.txt",
+        "config/datasets/test-from-gend/FakeAVCeleb/FakeAVCeleb_FV-FA-fsgan-wav2lip_fake.txt",
+        "config/datasets/test-from-gend/FakeAVCeleb/FakeAVCeleb_FV-FA-wav2lip_fake.txt",
+        "config/datasets/test-from-gend/FakeAVCeleb/FakeAVCeleb_FV-RA-faceswap_fake.txt",
+        "config/datasets/test-from-gend/FakeAVCeleb/FakeAVCeleb_FV-RA-fsgan_fake.txt",
+        "config/datasets/test-from-gend/FakeAVCeleb/FakeAVCeleb_FV-RA-wav2lip_fake.txt",
+        "config/datasets/test-from-gend/FakeAVCeleb/FakeAVCeleb_RV-RA-real_real.txt",
     )
 
     class FV_RA_WL:
         test = Files(
-            "config/datasets/FakeAVCeleb/FV-RA-wav2lip.txt",
-            "config/datasets/FakeAVCeleb/RV-RA-real.txt",
+            "config/datasets/test-from-gend/FakeAVCeleb/FakeAVCeleb_FV-RA-wav2lip_fake.txt",
+            "config/datasets/test-from-gend/FakeAVCeleb/FakeAVCeleb_RV-RA-real_real.txt",
         )
 
     class FV_FA_FS:
         test = Files(
-            "config/datasets/FakeAVCeleb/FV-FA-faceswap-wav2lip.txt",
-            "config/datasets/FakeAVCeleb/RV-RA-real.txt",
+            "config/datasets/test-from-gend/FakeAVCeleb/FakeAVCeleb_FV-FA-faceswap-wav2lip_fake.txt",
+            "config/datasets/test-from-gend/FakeAVCeleb/FakeAVCeleb_RV-RA-real_real.txt",
         )
 
     class FV_FA_GAN:
         test = Files(
-            "config/datasets/FakeAVCeleb/FV-FA-fsgan-wav2lip.txt",
-            "config/datasets/FakeAVCeleb/RV-RA-real.txt",
+            "config/datasets/test-from-gend/FakeAVCeleb/FakeAVCeleb_FV-FA-fsgan-wav2lip_fake.txt",
+            "config/datasets/test-from-gend/FakeAVCeleb/FakeAVCeleb_RV-RA-real_real.txt",
         )
 
     class FV_FA_WL:
         test = Files(
-            "config/datasets/FakeAVCeleb/FV-FA-wav2lip.txt",
-            "config/datasets/FakeAVCeleb/RV-RA-real.txt",
+            "config/datasets/test-from-gend/FakeAVCeleb/FakeAVCeleb_FV-FA-wav2lip_fake.txt",
+            "config/datasets/test-from-gend/FakeAVCeleb/FakeAVCeleb_RV-RA-real_real.txt",
         )
 
 
@@ -669,95 +671,95 @@ class PolyGlotFake:
     """https://arxiv.org/abs/2405.08838"""
 
     test = Files(
-        "config/datasets/PolyGlotFake/real-ar.txt",
-        "config/datasets/PolyGlotFake/real-en.txt",
-        "config/datasets/PolyGlotFake/real-es.txt",
-        "config/datasets/PolyGlotFake/real-fr.txt",
-        "config/datasets/PolyGlotFake/real-ja.txt",
-        "config/datasets/PolyGlotFake/real-ru.txt",
-        "config/datasets/PolyGlotFake/real-zh.txt",
-        "config/datasets/PolyGlotFake/ar2en_Wav2Lip.txt",
-        "config/datasets/PolyGlotFake/ar2en_video_retalking.txt",
-        "config/datasets/PolyGlotFake/ar2es_Wav2Lip.txt",
-        "config/datasets/PolyGlotFake/ar2es_video_retalking.txt",
-        "config/datasets/PolyGlotFake/ar2fr_Wav2Lip.txt",
-        "config/datasets/PolyGlotFake/ar2fr_video_retalking.txt",
-        "config/datasets/PolyGlotFake/ar2ja_Wav2Lip.txt",
-        "config/datasets/PolyGlotFake/ar2ja_video_retalking.txt",
-        "config/datasets/PolyGlotFake/ar2ru_Wav2Lip.txt",
-        "config/datasets/PolyGlotFake/ar2ru_video_retalking.txt",
-        "config/datasets/PolyGlotFake/ar2zh_Wav2Lip.txt",
-        "config/datasets/PolyGlotFake/ar2zh_video_retalking.txt",
-        "config/datasets/PolyGlotFake/en2ar_Wav2Lip.txt",
-        "config/datasets/PolyGlotFake/en2ar_video_retalking.txt",
-        "config/datasets/PolyGlotFake/en2es_Wav2Lip.txt",
-        "config/datasets/PolyGlotFake/en2es_video_retalking.txt",
-        "config/datasets/PolyGlotFake/en2fr_Wav2Lip.txt",
-        "config/datasets/PolyGlotFake/en2fr_video_retalking.txt",
-        "config/datasets/PolyGlotFake/en2ja_Wav2Lip.txt",
-        "config/datasets/PolyGlotFake/en2ja_video_retalking.txt",
-        "config/datasets/PolyGlotFake/en2ru_Wav2Lip.txt",
-        "config/datasets/PolyGlotFake/en2ru_video_retalking.txt",
-        "config/datasets/PolyGlotFake/en2zh_Wav2Lip.txt",
-        "config/datasets/PolyGlotFake/en2zh_video_retalking.txt",
-        "config/datasets/PolyGlotFake/es2ar_Wav2Lip.txt",
-        "config/datasets/PolyGlotFake/es2ar_video_retalking.txt",
-        "config/datasets/PolyGlotFake/es2en_Wav2Lip.txt",
-        "config/datasets/PolyGlotFake/es2en_video_retalking.txt",
-        "config/datasets/PolyGlotFake/es2fr_Wav2Lip.txt",
-        "config/datasets/PolyGlotFake/es2fr_video_retalking.txt",
-        "config/datasets/PolyGlotFake/es2ja_Wav2Lip.txt",
-        "config/datasets/PolyGlotFake/es2ja_video_retalking.txt",
-        "config/datasets/PolyGlotFake/es2ru_Wav2Lip.txt",
-        "config/datasets/PolyGlotFake/es2ru_video_retalking.txt",
-        "config/datasets/PolyGlotFake/es2zh_Wav2Lip.txt",
-        "config/datasets/PolyGlotFake/es2zh_video_retalking.txt",
-        "config/datasets/PolyGlotFake/fr2ar_Wav2Lip.txt",
-        "config/datasets/PolyGlotFake/fr2ar_video_retalking.txt",
-        "config/datasets/PolyGlotFake/fr2en_Wav2Lip.txt",
-        "config/datasets/PolyGlotFake/fr2en_video_retalking.txt",
-        "config/datasets/PolyGlotFake/fr2es_Wav2Lip.txt",
-        "config/datasets/PolyGlotFake/fr2es_video_retalking.txt",
-        "config/datasets/PolyGlotFake/fr2ja_Wav2Lip.txt",
-        "config/datasets/PolyGlotFake/fr2ja_video_retalking.txt",
-        "config/datasets/PolyGlotFake/fr2ru_Wav2Lip.txt",
-        "config/datasets/PolyGlotFake/fr2ru_video_retalking.txt",
-        "config/datasets/PolyGlotFake/fr2zh_Wav2Lip.txt",
-        "config/datasets/PolyGlotFake/fr2zh_video_retalking.txt",
-        "config/datasets/PolyGlotFake/ja2ar_Wav2Lip.txt",
-        "config/datasets/PolyGlotFake/ja2ar_video_retalking.txt",
-        "config/datasets/PolyGlotFake/ja2en_Wav2Lip.txt",
-        "config/datasets/PolyGlotFake/ja2en_video_retalking.txt",
-        "config/datasets/PolyGlotFake/ja2es_Wav2Lip.txt",
-        "config/datasets/PolyGlotFake/ja2es_video_retalking.txt",
-        "config/datasets/PolyGlotFake/ja2fr_Wav2Lip.txt",
-        "config/datasets/PolyGlotFake/ja2fr_video_retalking.txt",
-        "config/datasets/PolyGlotFake/ja2ru_Wav2Lip.txt",
-        "config/datasets/PolyGlotFake/ja2ru_video_retalking.txt",
-        "config/datasets/PolyGlotFake/ja2zh_Wav2Lip.txt",
-        "config/datasets/PolyGlotFake/ja2zh_video_retalking.txt",
-        "config/datasets/PolyGlotFake/ru2ar_Wav2Lip.txt",
-        "config/datasets/PolyGlotFake/ru2ar_video_retalking.txt",
-        "config/datasets/PolyGlotFake/ru2en_Wav2Lip.txt",
-        "config/datasets/PolyGlotFake/ru2en_video_retalking.txt",
-        "config/datasets/PolyGlotFake/ru2es_Wav2Lip.txt",
-        "config/datasets/PolyGlotFake/ru2es_video_retalking.txt",
-        "config/datasets/PolyGlotFake/ru2fr_Wav2Lip.txt",
-        "config/datasets/PolyGlotFake/ru2fr_video_retalking.txt",
-        "config/datasets/PolyGlotFake/ru2ja_Wav2Lip.txt",
-        "config/datasets/PolyGlotFake/ru2zh_Wav2Lip.txt",
-        "config/datasets/PolyGlotFake/ru2zh_video_retalking.txt",
-        "config/datasets/PolyGlotFake/zh2ar_Wav2Lip.txt",
-        "config/datasets/PolyGlotFake/zh2ar_video_retalking.txt",
-        "config/datasets/PolyGlotFake/zh2en_Wav2Lip.txt",
-        "config/datasets/PolyGlotFake/zh2en_video_retalking.txt",
-        "config/datasets/PolyGlotFake/zh2es_Wav2Lip.txt",
-        "config/datasets/PolyGlotFake/zh2es_video_retalking.txt",
-        "config/datasets/PolyGlotFake/zh2fr_Wav2Lip.txt",
-        "config/datasets/PolyGlotFake/zh2fr_video_retalking.txt",
-        "config/datasets/PolyGlotFake/zh2ja_Wav2Lip.txt",
-        "config/datasets/PolyGlotFake/zh2ru_Wav2Lip.txt",
-        "config/datasets/PolyGlotFake/zh2ru_video_retalking.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_zh2fr_video_retalking_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_ar2es_video_retalking_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_zh2ja_Wav2Lip_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_es2ar_video_retalking_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_ar2ru_Wav2Lip_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_zh2es_video_retalking_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_es2fr_video_retalking_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_en2fr_Wav2Lip_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_fr2ru_Wav2Lip_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_zh2es_Wav2Lip_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_ru2en_video_retalking_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_real-en_real.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_ru2fr_Wav2Lip_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_en2ar_video_retalking_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_fr2en_video_retalking_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_ar2es_Wav2Lip_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_ru2en_Wav2Lip_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_ja2zh_Wav2Lip_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_ja2ar_video_retalking_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_real-es_real.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_es2en_video_retalking_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_es2ru_Wav2Lip_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_ja2en_video_retalking_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_ja2es_Wav2Lip_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_zh2ru_video_retalking_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_real-zh_real.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_ru2es_video_retalking_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_fr2ja_Wav2Lip_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_en2es_Wav2Lip_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_fr2en_Wav2Lip_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_real-ar_real.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_en2zh_Wav2Lip_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_zh2fr_Wav2Lip_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_real-fr_real.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_zh2ru_Wav2Lip_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_zh2ar_Wav2Lip_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_fr2ar_video_retalking_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_ar2fr_video_retalking_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_ar2ja_video_retalking_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_es2en_Wav2Lip_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_ar2ru_video_retalking_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_ar2ja_Wav2Lip_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_ja2zh_video_retalking_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_fr2es_video_retalking_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_ar2zh_video_retalking_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_ru2ja_Wav2Lip_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_ja2es_video_retalking_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_ru2ar_Wav2Lip_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_en2ja_video_retalking_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_ar2en_Wav2Lip_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_zh2en_Wav2Lip_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_ar2fr_Wav2Lip_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_es2zh_video_retalking_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_ja2ru_Wav2Lip_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_en2ru_video_retalking_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_es2zh_Wav2Lip_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_es2fr_Wav2Lip_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_ru2zh_Wav2Lip_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_zh2ar_video_retalking_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_en2fr_video_retalking_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_fr2zh_Wav2Lip_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_ja2fr_Wav2Lip_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_zh2en_video_retalking_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_ja2en_Wav2Lip_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_es2ja_Wav2Lip_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_en2ja_Wav2Lip_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_real-ru_real.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_ja2ar_Wav2Lip_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_es2ar_Wav2Lip_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_en2es_video_retalking_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_ru2zh_video_retalking_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_en2ar_Wav2Lip_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_fr2es_Wav2Lip_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_en2zh_video_retalking_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_ar2zh_Wav2Lip_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_es2ru_video_retalking_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_ja2ru_video_retalking_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_ru2fr_video_retalking_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_en2ru_Wav2Lip_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_ar2en_video_retalking_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_fr2ja_video_retalking_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_fr2zh_video_retalking_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_ja2fr_video_retalking_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_es2ja_video_retalking_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_ru2ar_video_retalking_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_real-ja_real.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_ru2es_Wav2Lip_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_fr2ru_video_retalking_fake.txt",
+        "config/datasets/test-from-gend/PolyGlotFake/PolyGlotFake_fr2ar_Wav2Lip_fake.txt",
     )
 
 
@@ -765,10 +767,10 @@ class IDForge_v1:
     """https://arxiv.org/abs/2401.11764"""
 
     train = Files(
-        "config/datasets/IDForge-v1/train/train-face_tts_infoswap.txt",
-        "config/datasets/IDForge-v1/train/train-face_tts_roop.txt",
-        "config/datasets/IDForge-v1/train/train-face_tts_simswap.txt",
-        "config/datasets/IDForge-v1/train/train-real.txt",
+        "config/datasets/test-from-gend/IDForge-v1/IDForge-v1_test-face_tts_infoswap_fake.txt",
+        "config/datasets/test-from-gend/IDForge-v1/IDForge-v1_test-face_tts_roop_fake.txt",
+        "config/datasets/test-from-gend/IDForge-v1/IDForge-v1_test-face_tts_simswap_fake.txt",
+        "config/datasets/test-from-gend/IDForge-v1/IDForge-v1_test-real_real.txt",
     )
 
     val = Files(

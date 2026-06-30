@@ -1,15 +1,179 @@
 from .. import config as C
 from ..config import Config
 
-from ..utils.files import Files, DF40, DF40Balanced, FSh, UADFV, DFD, DFDC, FFIW, FF, CDFv3, DeepSpeak_v1_1, DeepSpeak_v2, CDFv2
+from ..utils.files import Files, DF40, DF40Balanced, FSh, UADFV, DFD, DFDC, FFIW, FF, CDFv3, DeepSpeak_v1_1, DeepSpeak_v2, CDFv2, KoDF, FakeAVCeleb, DFDM, PolyGlotFake, IDForge_v1
 
 experiments = {
 
-    "test-own-clip-v2-uadfv": [
+    # "test-own-clip-v2-uadfv": [
+    #     Config(
+    #         run_dir="runs/test-own",
+    #         backbone=C.Backbone.CLIP_L_14,
+    #         tst_files=UADFV.test,
+    #         batch_size=128,
+    #         mini_batch_size=128,
+    #         wandb=False,
+    #         devices=[0],
+    #         checkpoint="runs/train/clip-from-gend-v2/checkpoints/own-clip-best_val_auroc_frame-v2.ckpt",
+    #         from_exp="clip-from-gend-v2"
+    #     )
+    # ],
+    # "test-own-clip-v2-dfd": [
+    #     Config(
+    #         run_dir="runs/test-own",
+    #         backbone=C.Backbone.CLIP_L_14,
+    #         tst_files=DFD.test,
+    #         batch_size=128,
+    #         mini_batch_size=128,
+    #         wandb=False,
+    #         devices=[0],
+    #         checkpoint="runs/train/clip-from-gend-v2/checkpoints/own-clip-best_val_auroc_frame-v2.ckpt",
+    #         from_exp="clip-from-gend-v2"
+    #     )
+    # ],
+    # "test-own-clip-v2-dfdc": [
+    #     Config(
+    #         run_dir="runs/test-own",
+    #         backbone=C.Backbone.CLIP_L_14,
+    #         tst_files=DFDC.test,
+    #         batch_size=128,
+    #         mini_batch_size=128,
+    #         wandb=False,
+    #         devices=[0],
+    #         checkpoint="runs/train/clip-from-gend-v2/checkpoints/own-clip-best_val_auroc_frame-v2.ckpt",
+    #         from_exp="clip-from-gend-v2"
+    #     )
+    # ],
+
+    # run 2
+    # "test-own-clip-v2-fsh": [
+    #     Config(
+    #         run_dir="runs/test-own",
+    #         backbone=C.Backbone.CLIP_L_14,
+    #         tst_files=FSh.test,
+    #         batch_size=128,
+    #         mini_batch_size=128,
+    #         wandb=False,
+    #         devices=[0],
+    #         checkpoint="runs/train/clip-from-gend-v2/checkpoints/own-clip-best_val_auroc_frame-v2.ckpt",
+    #         from_exp="clip-from-gend-v2"
+    #     )
+    # ],
+    # "test-own-clip-v2-cdfv2": [
+    #     Config(
+    #         run_dir="runs/test-own",
+    #         backbone=C.Backbone.CLIP_L_14,
+    #         tst_files=CDFv2.test,
+    #         batch_size=128,
+    #         mini_batch_size=128,
+    #         wandb=False,
+    #         devices=[0],
+    #         checkpoint="runs/train/clip-from-gend-v2/checkpoints/own-clip-best_val_auroc_frame-v2.ckpt",
+    #         from_exp="clip-from-gend-v2"
+    #     )
+    # ],
+
+    # "test-own-clip-v2-ffiw": [
+    #     Config(
+    #         run_dir="runs/test-own",
+    #         backbone=C.Backbone.CLIP_L_14,
+    #         tst_files=FFIW.test,
+    #         batch_size=128,
+    #         mini_batch_size=128,
+    #         wandb=False,
+    #         devices=[0],
+    #         checkpoint="runs/train/clip-from-gend-v2/checkpoints/own-clip-best_val_auroc_frame-v2.ckpt",
+    #         from_exp="clip-from-gend-v2"
+    #     )
+    # ],
+
+    # "test-own-clip-v2-kodf-normal": [
+    #     Config(
+    #         run_dir="runs/test-own",
+    #         backbone=C.Backbone.CLIP_L_14,
+    #         tst_files=KoDF.test,
+    #         batch_size=128,
+    #         mini_batch_size=128,
+    #         wandb=False,
+    #         devices=[0],
+    #         checkpoint="runs/train/clip-from-gend-v2/checkpoints/own-clip-best_val_auroc_frame-v2.ckpt",
+    #         from_exp="clip-from-gend-v2"
+    #     )
+    # ],
+    # "test-own-clip-v2-kodf-adv": [
+    #     Config(
+    #         run_dir="runs/test-own",
+    #         backbone=C.Backbone.CLIP_L_14,
+    #         tst_files=KoDF.adversarial,
+    #         batch_size=128,
+    #         mini_batch_size=128,
+    #         wandb=False,
+    #         devices=[0],
+    #         checkpoint="runs/train/clip-from-gend-v2/checkpoints/own-clip-best_val_auroc_frame-v2.ckpt",
+    #         from_exp="clip-from-gend-v2"
+    #     )
+    # ],
+    # "test-own-clip-v2-kodf-all": [
+    #     Config(
+    #         run_dir="runs/test-own",
+    #         backbone=C.Backbone.CLIP_L_14,
+    #         tst_files=KoDF.test_all,
+    #         batch_size=128,
+    #         mini_batch_size=128,
+    #         wandb=False,
+    #         devices=[0],
+    #         checkpoint="runs/train/clip-from-gend-v2/checkpoints/own-clip-best_val_auroc_frame-v2.ckpt",
+    #         from_exp="clip-from-gend-v2"
+    #     )
+    # ],
+
+    # run 3
+
+    # "test-own-clip-v2-fakeavceleb": [
+    #     Config(
+    #         run_dir="runs/test-own",
+    #         backbone=C.Backbone.CLIP_L_14,
+    #         tst_files=FakeAVCeleb.test,
+    #         batch_size=128,
+    #         mini_batch_size=128,
+    #         wandb=False,
+    #         devices=[0],
+    #         checkpoint="runs/train/clip-from-gend-v2/checkpoints/own-clip-best_val_auroc_frame-v2.ckpt",
+    #         from_exp="clip-from-gend-v2"
+    #     )
+    # ],
+    # "test-own-clip-v2-dfdm": [
+    #     Config(
+    #         run_dir="runs/test-own",
+    #         backbone=C.Backbone.CLIP_L_14,
+    #         tst_files=DFDM.test,
+    #         batch_size=128,
+    #         mini_batch_size=128,
+    #         wandb=False,
+    #         devices=[0],
+    #         checkpoint="runs/train/clip-from-gend-v2/checkpoints/own-clip-best_val_auroc_frame-v2.ckpt",
+    #         from_exp="clip-from-gend-v2"
+    #     )
+    # ],
+
+    # "test-own-clip-v2-polyglotfake": [
+    #     Config(
+    #         run_dir="runs/test-own",
+    #         backbone=C.Backbone.CLIP_L_14,
+    #         tst_files=PolyGlotFake.test,
+    #         batch_size=128,
+    #         mini_batch_size=128,
+    #         wandb=False,
+    #         devices=[0],
+    #         checkpoint="runs/train/clip-from-gend-v2/checkpoints/own-clip-best_val_auroc_frame-v2.ckpt",
+    #         from_exp="clip-from-gend-v2"
+    #     )
+    # ],
+    "test-own-clip-v2-idforge": [
         Config(
             run_dir="runs/test-own",
             backbone=C.Backbone.CLIP_L_14,
-            tst_files=UADFV.test,
+            tst_files=IDForge_v1.test,
             batch_size=128,
             mini_batch_size=128,
             wandb=False,
@@ -18,11 +182,11 @@ experiments = {
             from_exp="clip-from-gend-v2"
         )
     ],
-    "test-own-clip-v2-dfd": [
+    "test-own-clip-v2-deepspeakv1": [
         Config(
             run_dir="runs/test-own",
             backbone=C.Backbone.CLIP_L_14,
-            tst_files=DFD.test,
+            tst_files=DeepSpeak_v1_1.test,
             batch_size=128,
             mini_batch_size=128,
             wandb=False,
@@ -31,11 +195,11 @@ experiments = {
             from_exp="clip-from-gend-v2"
         )
     ],
-    "test-own-clip-v2-dfdc": [
+    "test-own-clip-v2-deepspeakv2": [
         Config(
             run_dir="runs/test-own",
             backbone=C.Backbone.CLIP_L_14,
-            tst_files=DFDC.test,
+            tst_files=DeepSpeak_v2.test,
             batch_size=128,
             mini_batch_size=128,
             wandb=False,
@@ -44,24 +208,11 @@ experiments = {
             from_exp="clip-from-gend-v2"
         )
     ],
-    "test-own-clip-v2-fsh": [
+    "test-own-clip-v2-cdfv3": [
         Config(
             run_dir="runs/test-own",
             backbone=C.Backbone.CLIP_L_14,
-            tst_files=FSh.test,
-            batch_size=128,
-            mini_batch_size=128,
-            wandb=False,
-            devices=[0],
-            checkpoint="runs/train/clip-from-gend-v2/checkpoints/own-clip-best_val_auroc_frame-v2.ckpt",
-            from_exp="clip-from-gend-v2"
-        )
-    ],
-    "test-own-clip-v2-cdfv2": [
-        Config(
-            run_dir="runs/test-own",
-            backbone=C.Backbone.CLIP_L_14,
-            tst_files=CDFv2.test,
+            tst_files=CDFv3.test,
             batch_size=128,
             mini_batch_size=128,
             wandb=False,
@@ -128,9 +279,9 @@ experiments = {
             checkpoint_name="best_val_auroc_frame",
             min_delta=0.002,
             checkpoint="runs/train/clip-from-gend-v2/checkpoints/own-clip-best_val_auroc_frame.ckpt",
-            wandb_id = "ulqep2rd",
-            resume=True,
-            throw_exception_if_run_exists=False,
+            #wandb_id = "ulqep2rd",
+            #resume=True,
+            #throw_exception_if_run_exists=False,
         )
     ],
 
