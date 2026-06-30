@@ -23,22 +23,28 @@ def load_third_party_model(config: Config) -> BaseDeepakeDetectionModel:
         from src.model.GenDHF import GenDHF
 
         return GenDHF(config)
+    
+    if "own" in config.checkpoint:
+        from src.model.GenD import GenD
+
+        return GenD(config, verbose=True)
+    
      # Détection basée sur le nom du fichier de poids
-    if "clip" in config.checkpoint.lower():
-        from src.model.Clip_large import CLIP
-        return CLIP(config)
+    # if "clip" in config.checkpoint.lower():
+    #     from src.model.Clip_large import CLIP
+    #     return CLIP(config)
     
-    if "pe" in config.checkpoint.lower():
-        from src.model.Perception import Perception
-        return Perception(config)
+    # if "pe" in config.checkpoint.lower():
+    #     from src.model.Perception import Perception
+    #     return Perception(config)
     
-    if "xception" in config.checkpoint.lower():
-        from src.model.Xception import Xception
-        return Xception(config)
+    # if "xception" in config.checkpoint.lower():
+    #     from src.model.Xception import Xception
+    #     return Xception(config)
     
-    if "spsl" in config.checkpoint.lower():
-        from src.model.SPSL import SPSL
-        return SPSL(config)
+    # if "spsl" in config.checkpoint.lower():
+    #     from src.model.SPSL import SPSL
+    #     return SPSL(config)
     
     if "weights/Effort" in config.checkpoint:
         # Download: https://drive.google.com/drive/folders/19kQwGDjF18uk78EnnypxxOLaG4Aa4v1h
@@ -83,14 +89,26 @@ def init_loggers(config: Config) -> list:
     loggers: list = [pl_loggers.CSVLogger(config.run_dir, name=config.run_name, version="")]
 
     if config.wandb:
-        wandb_logger = pl_loggers.WandbLogger(
-            project="deepfake",
-            name=config.run_name,
-            save_dir=save_dir,
-            tags=set(config.wandb_tags),
-            group=config.wandb_group,
-        )
-        loggers.append(wandb_logger)
+        if config.checkpoint and config.resume:
+            wandb_logger = pl_loggers.WandbLogger(
+                project="deepfake",
+                name=config.run_name,
+                save_dir=save_dir,
+                tags=set(config.wandb_tags),
+                group=config.wandb_group,
+                resume="must",
+                id=config.wandb_id
+            )
+            loggers.append(wandb_logger)
+        else:
+            wandb_logger = pl_loggers.WandbLogger(
+                project="deepfake",
+                name=config.run_name,
+                save_dir=save_dir,
+                tags=set(config.wandb_tags),
+                group=config.wandb_group,
+            )
+            loggers.append(wandb_logger)
 
     return loggers
 
@@ -111,6 +129,7 @@ def init_callbacks(config: Config) -> list:
                 patience=config.early_stopping_patience,
                 mode=config.monitor_metric_mode,
                 verbose=True,
+                min_delta=config.min_delta,
             )
         )
 
@@ -140,6 +159,7 @@ def main(config: Config, train: bool):
 
     data_module = datasets.DeepfakeDataModule(config, model.get_preprocessing())
 
+
     save_dir = f"{config.run_dir}/{config.run_name}"
 
     trainer = Trainer(
@@ -162,7 +182,12 @@ def main(config: Config, train: bool):
 
     if train:
         try:
-            trainer.fit(model, data_module)
+            # Si un checkpoint est fourni dans la config, on s'en sert pour reprendre
+            if config.checkpoint is not None:
+                logger.print_info(f"Resuming training from {config.checkpoint}")
+                trainer.fit(model, data_module, ckpt_path=config.checkpoint)
+            else:
+                trainer.fit(model, data_module)
         except KeyboardInterrupt:
             logger.print_warning("Training interrupted")
         except Exception as e:

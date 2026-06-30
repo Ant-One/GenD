@@ -20,6 +20,8 @@ def checks(config: Config):
         if config.remove_if_run_exists:
             logger.print_warning(f"Folder [magenta]{save_dir}[/] is removed")
             shutil.rmtree(str(save_dir))
+        if config.resume:
+            pass
         else:
             logger.print("Enter [green bold]R[/] to replace")
             # Interactively ask

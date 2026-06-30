@@ -144,6 +144,7 @@ class Config(Validation, validate_assignment=True):
     seed: int = 42  # Random seed for reproducibility
     throw_exception_if_run_exists: bool = False  # Throw an exception if the run directory exists
     remove_if_run_exists: bool = False  # Remove existing run directory if it exists
+    resume: bool = False
 
     # Model configuration
     num_classes: int = 2
@@ -201,11 +202,13 @@ class Config(Validation, validate_assignment=True):
     checkpoint_name: str = "best_mAP"  # Checkpoint to use for testing
     monitor_metric: str = "val/mAP_video"  # Metric to monitor for early stopping and checkpointing
     monitor_metric_mode: str = "max"  # Mode for monitoring metric ("max" or "min")
+    min_delta: float = 0.0
 
     # Logging
     wandb: bool = False  # Log metrics to Weights & Biases
     wandb_tags: list[str] = []  # Tags to use for Weights & Biases
     wandb_group: None | str = None  # Group to use for Weights & Biases
+    wandb_id: None | str = None
 
     # Post-processing
     make_binary_before_video_aggregation: bool = True  # Make binary labels before video aggregation

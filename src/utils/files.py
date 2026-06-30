@@ -96,9 +96,9 @@ class CDFv2:
     """https://arxiv.org/abs/1909.12962"""
 
     test = Files(
-        "config/datasets/CDFv2/test/Celeb-synthesis.txt",
-        "config/datasets/CDFv2/test/YouTube-real.txt",
-        "config/datasets/CDFv2/test/Celeb-real.txt",
+        "config/datasets/test-from-gend/CDFv2/Celeb_real.txt",
+        "config/datasets/test-from-gend/CDFv2/Celeb-synthesis_fake.txt",
+        "config/datasets/test-from-gend/CDFv2/YouTube_real.txt",
     )
 
     # It is not an official validation set but generated from {all}\{test} files
@@ -446,8 +446,8 @@ class DFD:
 
 class DFDC:
     test = Files(
-        "config/datasets/test-from-gend/DFDC_fake.txt",
-        "config/datasets/test-from-gend/DFDC_real.txt",
+        "config/datasets/test-from-gend/DFDC/DFDC_fake.txt",
+        "config/datasets/test-from-gend/DFDC/DFDC_real.txt",
     )
 
 
@@ -467,8 +467,8 @@ class UADFV:
     """https://arxiv.org/abs/1806.02877"""
 
     test = Files(
-        "config/datasets/test-from-gend/UADFV_fake.txt",
-        "config/datasets/test-from-gend/UADFV_real.txt",
+        "config/datasets/test-from-gend/FSh/FSh_fake.txt",
+        "config/datasets/test-from-gend/FSh/FSh_real.txt",
     )
 
 
@@ -1007,6 +1007,8 @@ class DF40:
         val_efs = Files(DiT.val + SiT.val + StyleGAN2.val + StyleGAN3.val + VQGAN.val + DDIM.val + Pixart.val + RDDM.val + SD21.val).unique()
 
         val_cdf = Files(val_fs + val_fr)
+
+        test_cdf = val_cdf
 
         # @classmethod
         # def get_test_dict(cls) -> dict[str, list[str]]:
