@@ -767,10 +767,10 @@ class IDForge_v1:
     """https://arxiv.org/abs/2401.11764"""
 
     train = Files(
-        "config/datasets/test-from-gend/IDForge-v1/IDForge-v1_test-face_tts_infoswap_fake.txt",
-        "config/datasets/test-from-gend/IDForge-v1/IDForge-v1_test-face_tts_roop_fake.txt",
-        "config/datasets/test-from-gend/IDForge-v1/IDForge-v1_test-face_tts_simswap_fake.txt",
-        "config/datasets/test-from-gend/IDForge-v1/IDForge-v1_test-real_real.txt",
+        "config/datasets/IDForge-v1/train/train-face_tts_infoswap.txt",
+        "config/datasets/IDForge-v1/train/train-face_tts_roop.txt",
+        "config/datasets/IDForge-v1/train/train-face_tts_simswap.txt",
+        "config/datasets/IDForge-v1/train/train-real.txt",
     )
 
     val = Files(
@@ -781,10 +781,10 @@ class IDForge_v1:
     )
 
     test = Files(
-        "config/datasets/IDForge-v1/test/test-face_tts_infoswap.txt",
-        "config/datasets/IDForge-v1/test/test-face_tts_roop.txt",
-        "config/datasets/IDForge-v1/test/test-face_tts_simswap.txt",
-        "config/datasets/IDForge-v1/test/test-real.txt",
+        "config/datasets/test-from-gend/IDForge-v1/IDForge-v1_test-face_tts_infoswap_fake.txt",
+        "config/datasets/test-from-gend/IDForge-v1/IDForge-v1_test-face_tts_roop_fake.txt",
+        "config/datasets/test-from-gend/IDForge-v1/IDForge-v1_test-face_tts_simswap_fake.txt",
+        "config/datasets/test-from-gend/IDForge-v1/IDForge-v1_test-real_real.txt",
     )
 
 
