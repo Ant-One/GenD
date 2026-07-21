@@ -127,6 +127,27 @@ class SiglipEncoder(nn.Module):
         return self.features_dim
 
 
+class CRadioEncoder(nn.Module):
+    def __init__(self, model_name="nvidia/C-RADIOv4-SO400M"):
+        super().__init__()
+
+        from transformers import AutoImageProcessor, AutoModel
+
+        self._preprocess = AutoImageProcessor.from_pretrained(model_name, trust_remote_code=True)
+        self.backbone = AutoModel.from_pretrained(model_name, trust_remote_code=True)
+        self.model_name = model_name
+        self.features_dim = 2304
+
+    def preprocess(self, image: Image) -> torch.Tensor:
+        return self._preprocess(images=image, return_tensors="pt")["pixel_values"][0]
+
+    def forward(self, preprocessed_images: torch.Tensor) -> torch.Tensor:
+        return self.backbone(preprocessed_images).summary
+
+    def get_features_dim(self) -> int:
+        return self.features_dim
+
+
 class GenDConfig(PretrainedConfig):
     model_type = "GenD"
 
@@ -164,6 +185,9 @@ class GenD(PreTrainedModel):
 
         elif "siglip" in backbone_lowercase:
             self.feature_extractor = SiglipEncoder(backbone)
+
+        elif "radio" in backbone_lowercase:
+            self.feature_extractor = CRadioEncoder(backbone)
 
         else:
             raise ValueError(f"Unknown backbone: {backbone}")

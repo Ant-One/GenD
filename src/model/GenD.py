@@ -83,6 +83,11 @@ class GenD(BaseDeepakeDetectionModel):
 
             self.feature_extractor = SiglipEncoder(backbone)
 
+        elif "radio" in backbone_lowercase:
+            from src.encoders.cradio_encoder import CRadioEncoder
+
+            self.feature_extractor = CRadioEncoder(backbone)
+
         else:
             raise ValueError(f"Unknown backbone: {backbone}")
 

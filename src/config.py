@@ -75,6 +75,9 @@ class Backbone(ValidateEnum):
     # https://github.com/huggingface/pytorch-image-models
     EVA02_L_P14_224 = "timm/eva02_large_patch14_224.mim_in22k"
 
+    # https://hf.co/nvidia/C-RADIOv4-SO400M
+    C_RADIOV4_SO400M = "nvidia/C-RADIOv4-SO400M"
+
 
 class BackboneArgs(Validation, validate_assignment=True):
     img_size: None | int = 224  # Image size for the backbone
