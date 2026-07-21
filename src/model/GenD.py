@@ -62,10 +62,11 @@ class GenD(BaseDeepakeDetectionModel):
 
             self.feature_extractor = CLIPEncoder(backbone)
 
-        elif "vit_pe" in backbone_lowercase:
+        elif "vit_pe" in backbone_lowercase or "eva" in backbone_lowercase:
             from src.encoders.perception_encoder import PerceptionEncoder
 
-            self.feature_extractor = PerceptionEncoder(backbone, self.config.backbone_args.img_size)
+            img_size = self.config.backbone_args.img_size if self.config.backbone_args is not None else None
+            self.feature_extractor = PerceptionEncoder(backbone, img_size)
 
         elif "dino" in backbone_lowercase:
             from src.encoders.dino_encoder import DINOEncoder
@@ -76,6 +77,11 @@ class GenD(BaseDeepakeDetectionModel):
                 merge_cls_token_with_patches = None
 
             self.feature_extractor = DINOEncoder(backbone, merge_cls_token_with_patches)
+
+        elif "siglip" in backbone_lowercase:
+            from src.encoders.siglip_encoder import SiglipEncoder
+
+            self.feature_extractor = SiglipEncoder(backbone)
 
         else:
             raise ValueError(f"Unknown backbone: {backbone}")

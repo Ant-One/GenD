@@ -13,8 +13,7 @@ class PerceptionEncoder(nn.Module):
     ):
         super().__init__()
 
-        if img_size is not None:
-            dynamic_img_size = True
+        dynamic_img_size = True if img_size is not None else False
 
         self.backbone: Eva = timm.create_model(
             model_name,

@@ -69,6 +69,12 @@ class Backbone(ValidateEnum):
     DINOv3_ViT_B = "facebook/dinov3-vitb16-pretrain-lvd1689m"
     DINOv3_ViT_L = "facebook/dinov3-vitl16-pretrain-lvd1689m"
 
+    # https://hf.co/google/siglip2-so400m-patch14-224
+    SIGLIP2_SO400M_P14_224 = "google/siglip2-so400m-patch14-224"
+
+    # https://github.com/huggingface/pytorch-image-models
+    EVA02_L_P14_224 = "timm/eva02_large_patch14_224.mim_in22k"
+
 
 class BackboneArgs(Validation, validate_assignment=True):
     img_size: None | int = 224  # Image size for the backbone

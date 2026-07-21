@@ -106,6 +106,27 @@ class PerceptionEncoder(nn.Module):
         return self.features_dim
 
 
+class SiglipEncoder(nn.Module):
+    def __init__(self, model_name="google/siglip2-so400m-patch14-224"):
+        super().__init__()
+
+        from transformers import AutoProcessor, SiglipVisionModel
+
+        self._preprocess = AutoProcessor.from_pretrained(model_name)
+        self.vision_model = SiglipVisionModel.from_pretrained(model_name)
+        self.model_name = model_name
+        self.features_dim = self.vision_model.config.hidden_size
+
+    def preprocess(self, image: Image) -> torch.Tensor:
+        return self._preprocess(images=image, return_tensors="pt")["pixel_values"][0]
+
+    def forward(self, preprocessed_images: torch.Tensor) -> torch.Tensor:
+        return self.vision_model(preprocessed_images).pooler_output
+
+    def get_features_dim(self) -> int:
+        return self.features_dim
+
+
 class GenDConfig(PretrainedConfig):
     model_type = "GenD"
 
@@ -135,11 +156,14 @@ class GenD(PreTrainedModel):
         if "clip" in backbone_lowercase:
             self.feature_extractor = CLIPEncoder(backbone)
 
-        elif "vit_pe" in backbone_lowercase:
+        elif "vit_pe" in backbone_lowercase or "eva" in backbone_lowercase:
             self.feature_extractor = PerceptionEncoder(backbone)
 
         elif "dino" in backbone_lowercase:
             self.feature_extractor = DINOEncoder(backbone)
+
+        elif "siglip" in backbone_lowercase:
+            self.feature_extractor = SiglipEncoder(backbone)
 
         else:
             raise ValueError(f"Unknown backbone: {backbone}")
