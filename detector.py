@@ -1,4 +1,8 @@
 # %%
+
+import sys
+print("PYTHON UTILISÉ :", sys.executable)
+
 import argparse
 import heapq
 import os

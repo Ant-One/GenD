@@ -29,18 +29,13 @@ def load_third_party_model(config: Config) -> BaseDeepakeDetectionModel:
 
         return GenD(config, verbose=True)
     
-     # Détection basée sur le nom du fichier de poids
-    # if "clip" in config.checkpoint.lower():
-    #     from src.model.Clip_large import CLIP
-    #     return CLIP(config)
+    if "clip_large" in config.checkpoint.lower():
+        from src.model.Clip_large import CLIP
+        return CLIP(config)
     
-    # if "pe" in config.checkpoint.lower():
-    #     from src.model.Perception import Perception
-    #     return Perception(config)
-    
-    # if "xception" in config.checkpoint.lower():
-    #     from src.model.Xception import Xception
-    #     return Xception(config)
+    if "xception" in config.checkpoint.lower():
+         from src.model.Xception import Xception
+         return Xception(config)
     
     # if "spsl" in config.checkpoint.lower():
     #     from src.model.SPSL import SPSL
@@ -117,7 +112,7 @@ def init_callbacks(config: Config) -> list:
     callbacks = [
         pl_callbacks.RichProgressBar(leave=True),
         ModelCheckpointParallel(
-            filename=config.checkpoint_name, monitor=config.monitor_metric, mode=config.monitor_metric_mode
+            filename=config.checkpoint_name, monitor=config.monitor_metric, mode=config.monitor_metric_mode, #save_top_k=-1,  # <--- this is important!
         ),
     ]
     # pl_callbacks.LearningRateFinder(1e-5, 1e-2),

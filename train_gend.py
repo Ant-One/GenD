@@ -1,5 +1,5 @@
 from run_exp import entry
-from src.exp.gend import experiments
+from src.exp.gend_clip import experiments
 
 if __name__ == "__main__":
     # Récupère tous les noms d'expériences de gend.py

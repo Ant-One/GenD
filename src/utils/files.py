@@ -438,10 +438,15 @@ class CDFv3:
 
 
 class DFD:
+    #train = Files(
+    #    "config/datasets/train-com/dfd-0.3x-1.5th_fake.txt",
+    #    "config/datasets/train-com/dfd-0.3x-1.5th_real.txt",
+    #)
     test = Files(
         "config/datasets/test-from-gend/DFD/DFD_fake.txt",
         "config/datasets/test-from-gend/DFD/DFD_real.txt",
     )
+    train = test
 
 
 class DFDC:
@@ -467,8 +472,8 @@ class UADFV:
     """https://arxiv.org/abs/1806.02877"""
 
     test = Files(
-        "config/datasets/test-from-gend/FSh/FSh_fake.txt",
-        "config/datasets/test-from-gend/FSh/FSh_real.txt",
+        "config/datasets/test-from-gend/UADFV/UADFV_fake.txt",
+        "config/datasets/test-from-gend/UADFV/UADFV_real.txt",
     )
 
 
@@ -1282,6 +1287,48 @@ class FFv2:
             "config/datasets/FFv2/train/SS_uniface_256.txt",
         )
 
+class ConfDF:
+    class th:
+        test = Files(
+            "config/datasets/confdf/confdf-th_fake.txt",
+            "config/datasets/confdf/confdf-th_real.txt",
+        )
+    
+    class th_m:
+        test = Files(
+            "config/datasets/confdf/confdf-th-m_fake.txt",
+            "config/datasets/confdf/confdf-th-m_real.txt",
+        )
+
+    class th_ob:
+        test = Files(
+            "config/datasets/confdf/confdf-th-ob_fake.txt",
+            "config/datasets/confdf/confdf-th-ob_real.txt",
+        )
+
+    class th_bb:
+        test = Files(
+            "config/datasets/confdf/confdf-th-bb_fake.txt",
+            "config/datasets/confdf/confdf-th-bb_real.txt",
+        )
+
+    test = Files(th.test + th_m.test + th_ob.test + th_bb.test)
+    val = test
+    train = test
+
+class Deepfake_vs_Real_60k:
+    val = Files(
+        "config/datasets/val-com/df60k_fake.txt",
+        "config/datasets/val-com/df60k_real.txt",
+    )
+    train = val
+
+class RedFace:
+    train = Files(
+        "config/datasets/redface/redface_fr.txt",
+        "config/datasets/redface/redface_fs.txt",
+        "config/datasets/redface/redface_real.txt",
+    )
 
 if __name__ == "__main__":
     import pandas as pd
