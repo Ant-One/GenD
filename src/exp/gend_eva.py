@@ -1,7 +1,7 @@
 from .. import config as C
 from ..config import Config
 
-from ..utils.files import Files, DF40, DF40Balanced, FSh, UADFV, DFD, DFDC, FFIW, FF, CDFv3, DeepSpeak_v1_1, DeepSpeak_v2, CDFv2, KoDF, FakeAVCeleb, DFDM, PolyGlotFake, IDForge_v1, ConfDF, Deepfake_vs_Real_60k
+from ..utils.files import Files, DF40, DF40Balanced, FSh, UADFV, DFD, DFDC, FFIW, FF, CDFv3, DeepSpeak_v1_1, DeepSpeak_v2, CDFv2, KoDF, FakeAVCeleb, DFDM, PolyGlotFake, IDForge_v1, ConfDF, Deepfake_vs_Real_60k, NTIRE
 
 experiments = {
 
@@ -35,11 +35,11 @@ experiments = {
         )
     ],
 
-    "test-eva-dfd-v1-ff": [
+    "test-eva-dfd-v1-ntire": [
         Config(
             run_dir="runs/com-test/eva-v1",
             backbone=C.Backbone.EVA02_L_P14_224,
-            tst_files=FF.train,
+            tst_files=NTIRE.val,
             batch_size=128,
             mini_batch_size=128,
             wandb=False,

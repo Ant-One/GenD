@@ -1,7 +1,7 @@
 from .. import config as C
 from ..config import Config
 
-from ..utils.files import Files, DF40, DF40Balanced, FSh, UADFV, DFD, DFDC, FFIW, FF, CDFv3, DeepSpeak_v1_1, DeepSpeak_v2, CDFv2, KoDF, FakeAVCeleb, DFDM, PolyGlotFake, IDForge_v1, ConfDF, Deepfake_vs_Real_60k, RedFace
+from ..utils.files import Files, DF40, DF40Balanced, FSh, UADFV, DFD, DFDC, FFIW, FF, CDFv3, DeepSpeak_v1_1, DeepSpeak_v2, CDFv2, KoDF, FakeAVCeleb, DFDM, PolyGlotFake, IDForge_v1, ConfDF, Deepfake_vs_Real_60k, RedFace, NTIRE
 
 experiments = {
 
@@ -43,19 +43,33 @@ experiments = {
         )
     ],
 
-    "test-clip-dfd-from-gend-redface-v1-nc-30-epochs-ff": [
+    "test-clip-yermandy-ff": [
         Config(
-            run_dir="runs/com-test/clip-v1",
+            run_dir="runs/com-test/clip-v3-ff",
             backbone=C.Backbone.CLIP_L_14,
-            tst_files=FF.train,
+            tst_files=NTIRE.val,
             batch_size=128,
             mini_batch_size=128,
             wandb=False,
             devices=[0],
-            checkpoint="runs/com-train/clip-dfd-redface-df60k-v1-nc-30/checkpoints/own-clip-best_mAP_frame.ckpt",
+            checkpoint="yermandy/GenD_CLIP_L_14",
             from_exp="clip-dfd-redface-df60k-v1-nc-30"
         )
     ],
+
+    # "test-clip-dfd-from-gend-redface-v1-nc-30-epochs-ff": [
+    #     Config(
+    #         run_dir="runs/com-test/clip-v1",
+    #         backbone=C.Backbone.CLIP_L_14,
+    #         tst_files=FF.train,
+    #         batch_size=128,
+    #         mini_batch_size=128,
+    #         wandb=False,
+    #         devices=[0],
+    #         checkpoint="runs/com-train/clip-dfd-redface-df60k-v1-nc-30/checkpoints/own-clip-best_mAP_frame.ckpt",
+    #         from_exp="clip-dfd-redface-df60k-v1-nc-30"
+    #     )
+    # ],
 
     # "test-clip-dfd-from-gend-redface-v1-nc-30-epochs-confdf": [
     #     Config(

@@ -1,7 +1,7 @@
 from .. import config as C
 from ..config import Config
 
-from ..utils.files import Files, DF40, DF40Balanced, FSh, UADFV, DFD, DFDC, FFIW, FF, CDFv3, DeepSpeak_v1_1, DeepSpeak_v2, CDFv2, KoDF, FakeAVCeleb, DFDM, PolyGlotFake, IDForge_v1, ConfDF, Deepfake_vs_Real_60k
+from ..utils.files import Files, DF40, DF40Balanced, FSh, UADFV, DFD, DFDC, FFIW, FF, CDFv3, DeepSpeak_v1_1, DeepSpeak_v2, CDFv2, KoDF, FakeAVCeleb, DFDM, PolyGlotFake, IDForge_v1, ConfDF, Deepfake_vs_Real_60k, NTIRE
 
 experiments = {
 
@@ -39,6 +39,20 @@ experiments = {
             #throw_exception_if_run_exists=False,
         )
     ],
+
+        "test-own-dino-v3-ntire": [
+            Config(
+                run_dir="runs/com-test",
+                backbone=C.Backbone.DINOv3_ViT_L,
+                tst_files=NTIRE.val,
+                batch_size=128,
+                mini_batch_size=128,
+                wandb=False,
+                devices=[0],
+                checkpoint="runs/train/dino-from-gend-v3/checkpoints/own-dino-best_val_roc_frame.ckpt",
+                from_exp="dino-from-gend-v2"
+            )
+        ],
 
     #     "test-own-dino-v2-uadfv": [
     #     Config(

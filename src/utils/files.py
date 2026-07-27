@@ -1330,6 +1330,12 @@ class RedFace:
         "config/datasets/redface/redface_real.txt",
     )
 
+class NTIRE:
+    val = Files(
+        "config/datasets/ntire/fake.txt",
+        "config/datasets/ntire/real.txt"
+    )
+
 if __name__ == "__main__":
     import pandas as pd
 

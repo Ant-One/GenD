@@ -128,7 +128,7 @@ class SiglipEncoder(nn.Module):
 
 
 class CRadioEncoder(nn.Module):
-    def __init__(self, model_name="nvidia/C-RADIOv4-SO400M"):
+    def __init__(self, model_name="nvidia/C-RADIOv4-SO400M", img_size: None | int = 224):
         super().__init__()
 
         from transformers import AutoImageProcessor, AutoModel
@@ -137,8 +137,11 @@ class CRadioEncoder(nn.Module):
         self.backbone = AutoModel.from_pretrained(model_name, trust_remote_code=True)
         self.model_name = model_name
         self.features_dim = 2304
+        self.img_size = img_size if img_size is not None else 224
 
     def preprocess(self, image: Image) -> torch.Tensor:
+        if self.img_size is not None:
+            image = image.resize((self.img_size, self.img_size), Image.BILINEAR)
         return self._preprocess(images=image, return_tensors="pt")["pixel_values"][0]
 
     def forward(self, preprocessed_images: torch.Tensor) -> torch.Tensor:

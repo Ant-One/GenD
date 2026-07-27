@@ -1,7 +1,7 @@
 from .. import config as C
 from ..config import Config
 
-from ..utils.files import Files, DF40, DF40Balanced, FSh, UADFV, DFD, DFDC, FFIW, FF, CDFv3, DeepSpeak_v1_1, DeepSpeak_v2, CDFv2, KoDF, FakeAVCeleb, DFDM, PolyGlotFake, IDForge_v1, ConfDF, Deepfake_vs_Real_60k
+from ..utils.files import Files, DF40, DF40Balanced, FSh, UADFV, DFD, DFDC, FFIW, FF, CDFv3, DeepSpeak_v1_1, DeepSpeak_v2, CDFv2, KoDF, FakeAVCeleb, DFDM, PolyGlotFake, IDForge_v1, ConfDF, Deepfake_vs_Real_60k, NTIRE
 
 experiments = {
 
@@ -39,6 +39,22 @@ experiments = {
             #throw_exception_if_run_exists=False,
         )
     ],
+
+         "test-own-pe-v3-ff-ntire": [
+            Config(
+                run_dir="runs/test-own/pev1",
+                backbone=C.Backbone.PerceptionEncoder_L_p14_336,
+                backbone_args=C.BackboneArgs(),
+                head=C.Head.NLinear,
+                tst_files=NTIRE.val,
+                batch_size=128,
+                mini_batch_size=128,
+                wandb=False,
+                devices=[0],
+                checkpoint="runs/train/pe-from-gend-v3/checkpoints/own-pe-best_val_roc_frame.ckpt",
+                from_exp="pe-from-gend-v1"
+            )
+        ],
 
     #     "test-own-pe-v1-uadfv": [
     #     Config(

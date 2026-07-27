@@ -86,7 +86,8 @@ class GenD(BaseDeepakeDetectionModel):
         elif "radio" in backbone_lowercase:
             from src.encoders.cradio_encoder import CRadioEncoder
 
-            self.feature_extractor = CRadioEncoder(backbone)
+            img_size = self.config.backbone_args.img_size if self.config.backbone_args is not None else None
+            self.feature_extractor = CRadioEncoder(backbone, img_size)
 
         else:
             raise ValueError(f"Unknown backbone: {backbone}")
