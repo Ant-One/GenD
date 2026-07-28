@@ -1,4 +1,5 @@
 from typing import override
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -16,8 +17,8 @@ preprocessing_xception = T.Compose(
         T.Resize((256, 256), interpolation=T.InterpolationMode.BILINEAR),
         T.ToTensor(),
         T.Normalize(
-            [0.5, 0.5, 0.5], 
-            [0.5, 0.5, 0.5], 
+            [0.5, 0.5, 0.5],
+            [0.5, 0.5, 0.5],
         ),
     ]
 )
@@ -90,7 +91,7 @@ class XceptionBackbone(nn.Module):
         self.relu = nn.ReLU(inplace=True)
         self.conv2 = nn.Conv2d(32, 64, 3, bias=False)
         self.bn2 = nn.BatchNorm2d(64)
-        
+
         self.block1 = Block(64, 128, 2, 2, start_with_relu=False, grow_first=True)
         self.block2 = Block(128, 256, 2, 2, start_with_relu=True, grow_first=True)
         self.block3 = Block(256, 728, 2, 2, start_with_relu=True, grow_first=True)
@@ -103,7 +104,7 @@ class XceptionBackbone(nn.Module):
         self.block10 = Block(728, 728, 3, 1, start_with_relu=True, grow_first=True)
         self.block11 = Block(728, 728, 3, 1, start_with_relu=True, grow_first=True)
         self.block12 = Block(728, 1024, 2, 2, start_with_relu=True, grow_first=False)
-        
+
         self.conv3 = SeparableConv2d(1024, 1536, 3, 1, 1)
         self.bn3 = nn.BatchNorm2d(1536)
         self.conv4 = SeparableConv2d(1536, 2048, 3, 1, 1)
@@ -135,7 +136,7 @@ class XceptionBackbone(nn.Module):
         x = self.conv4(x)
         x = self.bn4(x)
         return x
-    
+
     def classifier(self, features):
         # Si on a détecté (lors du load_checkpoint) qu'il faut utiliser adjust_channel
         # car last_linear attend 512 entrées.
@@ -143,7 +144,7 @@ class XceptionBackbone(nn.Module):
              x = self.adjust_channel(features)
         else:
              x = F.relu(features) # Note: DFB fait un relu ici s'il n'y a pas adjust_channel !
-             
+
         x = F.adaptive_avg_pool2d(x, (1, 1))
         x = x.view(x.size(0), -1)
         x = self.last_linear(x)
@@ -180,21 +181,21 @@ class Xception(BaseDeepakeDetectionModel):
         """Chargement robuste des poids de DeepFakeBench."""
         logger.print_info(f"Loading DeepFakeBench Xception weights from {checkpoint_path}")
         state_dict = torch.load(checkpoint_path, map_location="cpu")
-        
+
         if 'state_dict' in state_dict:
             state_dict = state_dict['state_dict']
-            
+
         new_state_dict = {}
         for key, value in state_dict.items():
             new_key = key
-            
+
             # 1. Nettoyage des préfixes DDP/Wrapper
             new_key = new_key.replace('module.', '').replace('backbone.', '')
-            
+
             # 2. Reshape pointwise
             if 'pointwise' in new_key and value.ndim == 2:
                 value = value.unsqueeze(-1).unsqueeze(-1)
-                
+
             new_state_dict[new_key] = value
 
         # 3. Vérification de la taille de last_linear dans le checkpoint
@@ -202,9 +203,9 @@ class Xception(BaseDeepakeDetectionModel):
         if 'last_linear.weight' in new_state_dict:
             weight_shape = new_state_dict['last_linear.weight'].shape
             in_features = weight_shape[1] # Dimension d'entrée
-            
+
             logger.print_info(f"Checkpoint last_linear expects {in_features} input features.")
-            
+
             # Si le checkpoint a été entraîné avec adjust_channel (512 features)
             if in_features == 512:
                 logger.print_info("Mode 'adjust_channel' detected. Rebuilding last_linear.")
@@ -217,7 +218,7 @@ class Xception(BaseDeepakeDetectionModel):
                         nn.BatchNorm2d(512),
                         nn.ReLU(inplace=False),
                     )
-            
+
             # Si le checkpoint a été entraîné sans adjust_channel (2048 features)
             elif in_features == 2048:
                 logger.print_info("Standard mode detected (2048 features). Removing adjust_channel weights.")
@@ -225,7 +226,7 @@ class Xception(BaseDeepakeDetectionModel):
                 keys_to_remove = [k for k in new_state_dict.keys() if 'adjust_channel' in k]
                 for k in keys_to_remove:
                     del new_state_dict[k]
-                    
+
         # 4. Chargement final
         # On utilise strict=False car on a peut-être supprimé adjust_channel
         incompatible_keys = self.model.load_state_dict(new_state_dict, strict=False)

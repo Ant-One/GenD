@@ -41,6 +41,8 @@ class ValidateEnum(str, Enum):
 class Optimizer(ValidateEnum):
     AdamW = "AdamW"
     SGD = "SGD"
+    SAM_SGD = "SAM-SGD"
+    SAM_AdamW = "SAM-AdamW"
 
 
 class InferenceStrategy(ValidateEnum):
@@ -191,6 +193,8 @@ class Config(Validation, validate_assignment=True):
     optimizer: str = "AdamW"  # Optimizer to use
     weight_decay: float = 0.0  # AdamW weight decay
     betas: list[float] = [0.9, 0.999]  # First and second moment coefficients for SGD and AdamW
+    sam_rho: float = 0.05  # Neighborhood size for SAM
+    sam_adaptive: bool = False  # Use Adaptive SAM (ASAM)
     loss: Loss = Loss()  # Loss function to use
 
     # Training configuration (managed by Lightning Trainer)

@@ -1,7 +1,29 @@
 from .. import config as C
 from ..config import Config
-
-from ..utils.files import Files, DF40, DF40Balanced, FSh, UADFV, DFD, DFDC, FFIW, FF, CDFv3, DeepSpeak_v1_1, DeepSpeak_v2, CDFv2, KoDF, FakeAVCeleb, DFDM, PolyGlotFake, IDForge_v1, ConfDF, Deepfake_vs_Real_60k, RedFace, NTIRE
+from ..utils.files import (
+       DF40,
+       DFD,
+       DFDC,
+       DFDM,
+       FF,
+       FFIW,
+       NTIRE,
+       UADFV,
+       CDFv2,
+       CDFv3,
+       ConfDF,
+       Deepfake_vs_Real_60k,
+       DeepSpeak_v1_1,
+       DeepSpeak_v2,
+       DF40Balanced,
+       FakeAVCeleb,
+       Files,
+       FSh,
+       IDForge_v1,
+       KoDF,
+       PolyGlotFake,
+       RedFace,
+)
 
 experiments = {
 
@@ -12,9 +34,9 @@ experiments = {
             head=C.Head.NLinear,
             unfreeze_layers=["pre_layrnorm", "layer_norm1", "layer_norm2", "post_layernorm"],
             loss=C.Loss(
-                ce_labels=1.0, 
-                #label_smoothing=0.0, 
-                uniformity=0.5, 
+                ce_labels=1.0,
+                #label_smoothing=0.0,
+                uniformity=0.5,
                 alignment_labels=0.1,
                 ),
             run_dir="runs/com-train",
@@ -304,9 +326,9 @@ experiments = {
     #         head=C.Head.Linear,
     #         unfreeze_layers=["pre_layrnorm", "layer_norm1", "layer_norm2", "post_layernorm"],
     #         loss=C.Loss(
-    #             ce_labels=1.0, 
-    #             label_smoothing=0.0, 
-    #             uniformity=0.5, 
+    #             ce_labels=1.0,
+    #             label_smoothing=0.0,
+    #             uniformity=0.5,
     #             alignment_labels=0.1,
     #             ),
     #         run_dir="runs/train",

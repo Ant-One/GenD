@@ -1,6 +1,7 @@
 # %%
 
 import sys
+
 print("PYTHON UTILISÉ :", sys.executable)
 
 import argparse

@@ -1,22 +1,44 @@
 from .. import config as C
 from ..config import Config
-
-from ..utils.files import Files, DF40, DF40Balanced, FSh, UADFV, DFD, DFDC, FFIW, FF, CDFv3, DeepSpeak_v1_1, DeepSpeak_v2, CDFv2, KoDF, FakeAVCeleb, DFDM, PolyGlotFake, IDForge_v1, ConfDF, Deepfake_vs_Real_60k, NTIRE
+from ..utils.files import (
+    DF40,
+    DFD,
+    DFDC,
+    DFDM,
+    FF,
+    FFIW,
+    NTIRE,
+    UADFV,
+    CDFv2,
+    CDFv3,
+    ConfDF,
+    Deepfake_vs_Real_60k,
+    DeepSpeak_v1_1,
+    DeepSpeak_v2,
+    DF40Balanced,
+    FakeAVCeleb,
+    Files,
+    FSh,
+    IDForge_v1,
+    KoDF,
+    PolyGlotFake,
+)
 
 experiments = {
 
-    "cradio-v2-dfd-sam": [
+    "cradio-v2-dfd-sam-labelsmooth": [
         Config(
             backbone=C.Backbone.C_RADIOV4_SO400M,
             backbone_args=C.BackboneArgs(),
             head=C.Head.NLinear,
             unfreeze_layers=["norm1", "norm2"],
             loss=C.Loss(
-                ce_labels=1.0, 
-                uniformity=0.5, 
+                ce_labels=1.0,
+                uniformity=0.5,
                 alignment_labels=0.1,
+                label_smoothing=0.1,
             ),
-            run_dir="runs/com-train/sam",
+            run_dir="runs/sam",
             trn_files=DFD.train,
             #trn_files=Files(FF.DF.train + FF.FS.train + FF.NT.train),
             #val_files=Files(ConfDF.val + Deepfake_vs_Real_60k.val),
@@ -34,6 +56,10 @@ experiments = {
             checkpoint_name="best_mAP",
             monitor_metric="val/mAP_video",
             min_delta=0.002,
+            optimizer="SAM-AdamW",
+            sam_rho=0.05,
+            sam_adaptive=True,
+            weight_decay=1e-4,
         )
     ],
 

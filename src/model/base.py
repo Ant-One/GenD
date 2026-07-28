@@ -444,3 +444,42 @@ class BaseDeepakeDetectionModel(pl.LightningModule):
                 logger.print(f"[orange]? {key}")
             else:
                 logger.print(f"[green]+ {key}")
+
+    def optimizer_step(
+        self,
+        epoch,
+        batch_idx,
+        optimizer,
+        optimizer_closure=None,
+        *args,
+        **kwargs,
+    ):
+        from src.optimizer.sam import SAM
+
+        if isinstance(optimizer, SAM):
+            # 1. First forward-backward pass (using the closure)
+            optimizer_closure()
+
+            # Unscale gradients if standard FP16 scaler is present
+            scaler = None
+            if getattr(self, "_trainer", None) is not None and self.trainer is not None:
+                scaler = getattr(self.trainer.precision_plugin, "scaler", None)
+
+            if scaler is not None:
+                scaler.unscale_(optimizer)
+
+            # 2. Perturb weights based on first-pass gradients
+            optimizer.first_step(zero_grad=True)
+
+            # 3. Second forward-backward pass
+            optimizer_closure()
+
+            # Unscale gradients if standard FP16 scaler is present
+            if scaler is not None:
+                scaler.unscale_(optimizer)
+
+            # 4. Restore original weights and update them using second-pass gradients
+            optimizer.second_step(zero_grad=True)
+        else:
+            # Standard optimization step
+            optimizer.step(closure=optimizer_closure)

@@ -398,7 +398,7 @@ class CDFv3:
 
     def to_x1_3_th0_5_all(f) -> str:
         return f.replace("/CDFv3/", "/CDFv3-x1.3-th0.5-all/")
-    
+
     val = Files(FS.val + FR.val + TF.val).unique()
 
     test = Files(FS.test + FR.test + TF.test).unique()
@@ -855,10 +855,10 @@ class DF40:
             )
 
         val_fs = Files(
-                BlendFace.val + E4S.val + Facedancer.val + Faceswap.val + FSGan.val + 
+                BlendFace.val + E4S.val + Facedancer.val + Faceswap.val + FSGan.val +
                 InSwap.val + MobileSwap.val + SimSwap.val + Uniface.val
             ).unique()
-        
+
         # FR
 
         # class MRAA:
@@ -915,7 +915,7 @@ class DF40:
                 "/home/antoine/balanced_df40_for_gend/df40/test/real/Celeb-real.txt",
                 "/home/antoine/balanced_df40_for_gend/df40/test/real/YouTube-real.txt",
             )
-        
+
         class Pirender:
             val = Files(
                 "/home/antoine/balanced_df40_for_gend/df40/test/fake/pirender_cdf.txt",
@@ -947,7 +947,7 @@ class DF40:
         val_fr = Files(
                 DANET.val + FaceVid2Vid.val + Fomm.val + Hyperreenact.val + Lia.val + MCNet.val + OneShotFree.val + Pirender.val + SadTalker.val + TPSM.val + Wav2Lip.val
             ).unique()
-        
+
      # EFS
 
         class DiT:
@@ -1038,7 +1038,7 @@ class DF40Balanced:
     # Train and val are combined below
 
     class FF:
-        
+
         # FS
         class BlendFace:
             train = Files(
@@ -1246,7 +1246,7 @@ class DF40Balanced:
         val_ff = Files(val_fs + val_fr)
 
         train_val_combined_ff = Files(train_ff + val_ff)
-        
+
 
 class FFv2:
     """
@@ -1293,7 +1293,7 @@ class ConfDF:
             "config/datasets/confdf/confdf-th_fake.txt",
             "config/datasets/confdf/confdf-th_real.txt",
         )
-    
+
     class th_m:
         test = Files(
             "config/datasets/confdf/confdf-th-m_fake.txt",

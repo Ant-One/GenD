@@ -323,6 +323,30 @@ class GenD(BaseDeepakeDetectionModel):
                 momentum=config.betas[0],
                 weight_decay=config.weight_decay,
             )
+        elif config.optimizer in (C.Optimizer.SAM_SGD, C.Optimizer.SAM_AdamW):
+            from src.optimizer.sam import SAM
+
+            base_opt_cls = (
+                optim.SGD
+                if config.optimizer == C.Optimizer.SAM_SGD
+                else optim.AdamW
+            )
+            base_opt_kwargs = {
+                "lr": config.lr,
+                "weight_decay": config.weight_decay,
+            }
+            if config.optimizer == C.Optimizer.SAM_SGD:
+                base_opt_kwargs["momentum"] = config.betas[0]
+            else:
+                base_opt_kwargs["betas"] = config.betas
+
+            optimizer = SAM(
+                optimizer_grouped_parameters,
+                base_optimizer=base_opt_cls,
+                rho=config.sam_rho,
+                adaptive=config.sam_adaptive,
+                **base_opt_kwargs,
+            )
         else:
             raise ValueError(f"Unknown optimizer: {config.optimizer}")
 

@@ -23,24 +23,24 @@ def load_third_party_model(config: Config) -> BaseDeepakeDetectionModel:
         from src.model.GenDHF import GenDHF
 
         return GenDHF(config)
-    
+
     if "own" in config.checkpoint:
         from src.model.GenD import GenD
 
         return GenD(config, verbose=True)
-    
+
     if "clip_large" in config.checkpoint.lower():
         from src.model.Clip_large import CLIP
         return CLIP(config)
-    
+
     if "xception" in config.checkpoint.lower():
          from src.model.Xception import Xception
          return Xception(config)
-    
+
     # if "spsl" in config.checkpoint.lower():
     #     from src.model.SPSL import SPSL
     #     return SPSL(config)
-    
+
     if "weights/Effort" in config.checkpoint:
         # Download: https://drive.google.com/drive/folders/19kQwGDjF18uk78EnnypxxOLaG4Aa4v1h
         from src.model.Effort import Effort

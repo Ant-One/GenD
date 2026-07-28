@@ -1,27 +1,30 @@
+from typing import override
+
 import torch
 import torch.nn as nn
-from typing import override
 from PIL import Image
 
-from src.config import Config, Backbone
+from src import config as C
+from src.config import Backbone, Config
 from src.encoders.perception_encoder import PerceptionEncoder
 from src.heads.head import HeadOutput, LinearProbe
 from src.model.base import BaseDeepakeDetectionModel, OutputsForMetrics
 from src.utils import logger
 
+
 class Perception(BaseDeepakeDetectionModel):
     def __init__(self, config: Config):
         super().__init__(config, verbose=True)
-        
+
         # On utilise le backbone spécifié dans la config
         backbone_name = config.backbone if "perception" in config.backbone.lower() else Backbone.PerceptionEncoder_L_p14_336.value
-        
+
         img_size = config.backbone_args.img_size if config.backbone_args else None
         self.feature_extractor = PerceptionEncoder(backbone_name, img_size=img_size)
-        
+
         features_dim = self.feature_extractor.get_features_dim()
         self.head = LinearProbe(features_dim, config.num_classes)
-        
+
         self.criterion = nn.CrossEntropyLoss()
 
     @override
@@ -39,7 +42,7 @@ class Perception(BaseDeepakeDetectionModel):
     def training_step(self, batch, batch_idx):
         loss, outputs, batch = self._shared_step(batch, batch_idx)
         self.log("train/loss", loss, prog_bar=True)
-        
+
         probs = outputs.logits_labels.softmax(dim=1)
         self.train_step_outputs.labels.update(batch.labels)
         self.train_step_outputs.probs.update(probs.detach())
@@ -50,7 +53,7 @@ class Perception(BaseDeepakeDetectionModel):
     def validation_step(self, batch, batch_idx):
         loss, outputs, batch = self._shared_step(batch, batch_idx)
         self.log("val/loss", loss, prog_bar=True)
-        
+
         probs = outputs.logits_labels.softmax(dim=1)
         self.val_step_outputs.labels.update(batch.labels)
         self.val_step_outputs.probs.update(probs.detach())
@@ -69,11 +72,47 @@ class Perception(BaseDeepakeDetectionModel):
 
     @override
     def configure_optimizers(self):
-        optimizer = torch.optim.AdamW(
-            self.parameters(), 
-            lr=self.config.lr, 
-            weight_decay=self.config.weight_decay
-        )
+        config = self.config
+        if config.optimizer == C.Optimizer.AdamW:
+            optimizer = torch.optim.AdamW(
+                self.parameters(),
+                lr=config.lr,
+                weight_decay=config.weight_decay,
+            )
+        elif config.optimizer == C.Optimizer.SGD:
+            optimizer = torch.optim.SGD(
+                self.parameters(),
+                lr=config.lr,
+                momentum=config.betas[0],
+                weight_decay=config.weight_decay,
+            )
+        elif config.optimizer in (C.Optimizer.SAM_SGD, C.Optimizer.SAM_AdamW):
+            from src.optimizer.sam import SAM
+
+            base_opt_cls = (
+                torch.optim.SGD
+                if config.optimizer == C.Optimizer.SAM_SGD
+                else torch.optim.AdamW
+            )
+            base_opt_kwargs = {
+                "lr": config.lr,
+                "weight_decay": config.weight_decay,
+            }
+            if config.optimizer == C.Optimizer.SAM_SGD:
+                base_opt_kwargs["momentum"] = config.betas[0]
+            else:
+                base_opt_kwargs["betas"] = config.betas
+
+            optimizer = SAM(
+                self.parameters(),
+                base_optimizer=base_opt_cls,
+                rho=config.sam_rho,
+                adaptive=config.sam_adaptive,
+                **base_opt_kwargs,
+            )
+        else:
+            raise ValueError(f"Unknown optimizer: {config.optimizer}")
+
         if self.config.lr_scheduler == "cosine":
             scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(
                 optimizer, T_max=self.config.max_epochs

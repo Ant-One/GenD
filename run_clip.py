@@ -1,5 +1,6 @@
-from run_exp import entry
 from src.exp.clip import experiments
+
+from run_exp import entry
 
 if __name__ == "__main__":
     exp_list = list(experiments.keys())

@@ -1,4 +1,4 @@
-from ..config import Config, Backbone
+from ..config import Backbone, Config
 from ..utils.files import DF40, CDFv2
 
 experiments = {

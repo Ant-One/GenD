@@ -1,7 +1,25 @@
 from .. import config as C
 from ..config import Config
-
-from ..utils.files import Files, DF40, DF40Balanced, FSh, UADFV, DFD, DFDC, FFIW, FF, CDFv3, DeepSpeak_v1_1, DeepSpeak_v2, CDFv2, KoDF, FakeAVCeleb, DFDM, PolyGlotFake, IDForge_v1
+from ..utils.files import (
+   DF40,
+   DFD,
+   DFDC,
+   DFDM,
+   FF,
+   FFIW,
+   UADFV,
+   CDFv2,
+   CDFv3,
+   DeepSpeak_v1_1,
+   DeepSpeak_v2,
+   DF40Balanced,
+   FakeAVCeleb,
+   Files,
+   FSh,
+   IDForge_v1,
+   KoDF,
+   PolyGlotFake,
+)
 
 experiments = {
    "test-pdm-xception-uadfv": [

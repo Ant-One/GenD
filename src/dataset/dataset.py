@@ -98,7 +98,7 @@ class DeepfakeDataset(BaseDataset):
 
         # Remove duplicate paths
         #files = np.unique(files).tolist()
-        
+
 
         # Limit the number of files
         if limit_files is not None:
@@ -216,7 +216,7 @@ class DeepfakeDataset(BaseDataset):
         # returns <source_name>
 
         return file_path.split("/")[-3]
-    
+
     @staticmethod
     def get_type_from_file(file_path: str) -> str:
         # ... / <dataset_name> / <fake/real> / <source_name> / <video_name> / <frame_name>

@@ -1,5 +1,5 @@
 #from .unused import examples, third_party, wacv_rebuttal_aug_robustness, wacv_rebuttal_paired_unpaired
-from . import gend_clip, gend_dino, gend_pe, xception, clip_large, confdf, gend_siglip, gend_eva, gend_cradio
+from . import clip_large, confdf, gend_clip, gend_cradio, gend_dino, gend_eva, gend_pe, gend_siglip, xception
 
 #from .unused import (
 #    wacv_rebuttal,

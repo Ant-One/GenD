@@ -1,28 +1,30 @@
+from typing import override
+
 import torch
 import torch.nn as nn
-from typing import override
 from PIL import Image
 
-from src.config import Config, Backbone
+from src.config import Backbone, Config
 from src.encoders.clip_encoder import CLIPEncoder
 from src.heads.head import HeadOutput, LinearProbe
 from src.model.base import BaseDeepakeDetectionModel, OutputsForMetrics
 from src.utils import logger
 
+
 class CLIP(BaseDeepakeDetectionModel):
     def __init__(self, config: Config):
         super().__init__(config, verbose=True)
-        
+
         # On utilise le backbone spécifié dans la config (par défaut CLIP Base 16)
         backbone_name = config.backbone if "clip" in config.backbone.lower() else Backbone.CLIP_B_16.value
         self.feature_extractor = CLIPEncoder(backbone_name)
-        
+
         # La dimension des features dépend du modèle CLIP choisi (1024 pour Large, 768 pour Base)
         features_dim = self.feature_extractor.get_features_dim()
-        
+
         # On utilise le head LinearProbe standard du projet
         self.head = LinearProbe(features_dim, config.num_classes)
-        
+
         self.test_step_outputs = OutputsForMetrics()
 
     @override
@@ -47,13 +49,13 @@ class CLIP(BaseDeepakeDetectionModel):
         """Chargement robuste des poids compatible avec DeepFakeBench et ce benchmark."""
         if not checkpoint_path:
             return
-            
+
         logger.print_info(f"Loading CLIP weights from {checkpoint_path}")
         state_dict = torch.load(checkpoint_path, map_location="cpu")
-        
+
         if 'state_dict' in state_dict:
             state_dict = state_dict['state_dict']
-            
+
         new_state_dict = {}
         for key, value in state_dict.items():
             new_key = key
@@ -61,7 +63,7 @@ class CLIP(BaseDeepakeDetectionModel):
             new_key = new_key.replace('module.', '').replace('backbone.', 'feature_extractor.vision_model.')
             # Adaptation du nom de la couche de classification vers LinearProbe
             new_key = new_key.replace('head.', 'head.linear.')
-            
+
             new_state_dict[new_key] = value
 
         incompatible_keys = self.load_state_dict(new_state_dict, strict=False)
